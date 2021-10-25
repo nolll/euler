@@ -9,7 +9,8 @@ namespace ConsoleApp
         private readonly IList<Problem> _problems = new List<Problem>
         {
             new Problem1(),
-            new Problem2()
+            new Problem2(),
+            new Problem3()
         };
 
         public Problem GetProblem(int? problemId)
