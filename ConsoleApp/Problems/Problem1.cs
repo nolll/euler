@@ -3,16 +3,16 @@ using System.Linq;
 
 namespace ConsoleApp.Problems
 {
-    public class Problem0001 : Problem
+    public class Problem1 : Problem
     {
-        public Problem0001() : base(1)
+        public Problem1() : base(1)
         {
         }
 
         public override PuzzleResult Run()
         {
             var multiplesOf3Or5 = new List<int>();
-            for (var i = 0; i < 10; i++)
+            for (var i = 0; i < 1000; i++)
             {
                 if(i % 3 == 0 || i % 5 == 0)
                     multiplesOf3Or5.Add(i);
@@ -20,7 +20,7 @@ namespace ConsoleApp.Problems
 
             var sum = multiplesOf3Or5.Sum();
 
-            return new PuzzleResult(sum);
+            return new PuzzleResult(sum, 233168);
         }
     }
 }
