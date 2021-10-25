@@ -10,14 +10,14 @@ namespace ConsoleApp.Problems
 
         public override PuzzleResult Run()
         {
-            var input = 600_851_475_143;
+            const long input = 600_851_475_143;
 
             var largestPrime = FindLargestPrime(input);
             
-            return new PuzzleResult(largestPrime);
+            return new PuzzleResult(largestPrime, 6857);
         }
 
-        private long FindLargestPrime(long num)
+        private static long FindLargestPrime(long num)
         {
             long largest = 0;
             
