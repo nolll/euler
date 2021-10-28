@@ -4,9 +4,8 @@ namespace ConsoleApp.Problems
 {
     public class Problem3 : Problem
     {
-        public Problem3() : base(3)
-        {
-        }
+        public override int Id => 3;
+        public override string Name => "Largest prime factor";
 
         public override PuzzleResult Run()
         {

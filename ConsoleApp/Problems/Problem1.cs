@@ -5,9 +5,8 @@ namespace ConsoleApp.Problems
 {
     public class Problem1 : Problem
     {
-        public Problem1() : base(1)
-        {
-        }
+        public override int Id => 1;
+        public override string Name => "Multiples of 3 or 5";
 
         public override PuzzleResult Run()
         {

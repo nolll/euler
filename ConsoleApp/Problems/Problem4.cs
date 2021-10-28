@@ -6,9 +6,8 @@ namespace ConsoleApp.Problems
 {
     public class Problem4 : Problem
     {
-        public Problem4() : base(4)
-        {
-        }
+        public override int Id => 4;
+        public override string Name => "Largest palindrome product";
 
         public override PuzzleResult Run()
         {

@@ -5,9 +5,8 @@ namespace ConsoleApp.Problems
 {
     public class Problem2 : Problem
     {
-        public Problem2() : base(2)
-        {
-        }
+        public override int Id => 2;
+        public override string Name => "Even Fibonacci numbers";
 
         public override PuzzleResult Run()
         {
