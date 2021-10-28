@@ -9,7 +9,7 @@ namespace ConsoleApp
         private static ProblemSelector _problemSelector;
         private const int PuzzleTimeout = 10;
 
-        private const int DebugProblem = 1;
+        private const int DebugProblem = 7;
 
         static void Main(string[] args)
         {
@@ -25,7 +25,7 @@ namespace ConsoleApp
             
             if (parameters.ProblemId == null)
             {
-#if SINGLE
+#if DEBUG
                 parameters = new Parameters(problemId: DebugProblem);
 #else
                 var allProblems = _problemSelector.GetAll();

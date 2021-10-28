@@ -7,9 +7,9 @@
         
         public override PuzzleResult Run()
         {
-            var first = 0;
+            var smallest = 0;
             var i = 0;
-            while (first == 0)
+            while (smallest == 0)
             {
                 i += 2;
                 var c = 0;
@@ -22,10 +22,10 @@
                 }
 
                 if (c == 19)
-                    first = i;
+                    smallest = i;
             }
             
-            return new PuzzleResult(first, 232792560);
+            return new PuzzleResult(smallest, 232792560);
         }
     }
 }
