@@ -11,9 +11,14 @@ namespace ConsoleApp.Problems
 
         public override PuzzleResult Run()
         {
-            const int minFactor = 100;
-            const int maxFactor = 999;
+            var largestPalindrome = Run(100, 999);
 
+            return new PuzzleResult(largestPalindrome, 906609);
+        }
+
+
+        public int Run(int minFactor, int maxFactor)
+        {
             var tried = new HashSet<(int, int)>();
             var largestPalindrome = 0;
 
@@ -39,7 +44,7 @@ namespace ConsoleApp.Problems
                 }
             }
 
-            return new PuzzleResult(largestPalindrome, 906609);
+            return largestPalindrome;
         }
     }
 }

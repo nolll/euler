@@ -7,11 +7,14 @@
 
         public override PuzzleResult Run()
         {
-            const long input = 600_851_475_143;
-
-            var largestPrime = Tools.FindLargestPrimeFactor(input);
+            var largestPrime = Run(600_851_475_143);
             
             return new PuzzleResult(largestPrime, 6857);
+        }
+
+        public long Run(long number)
+        {
+            return Tools.FindLargestPrimeFactor(number);
         }
     }
 }
