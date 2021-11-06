@@ -76,5 +76,14 @@ namespace Tests
 
             Assert.That(result, Is.EqualTo(5832));
         }
+
+        [Test]
+        public void TestProblem9()
+        {
+            var problem = new Problem9();
+            var result = problem.Run(12);
+
+            Assert.That(result, Is.EqualTo(60));
+        }
     }
 }
