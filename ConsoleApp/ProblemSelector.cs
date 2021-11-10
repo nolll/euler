@@ -8,15 +8,16 @@ namespace ConsoleApp
     {
         private readonly IList<Problem> _problems = new List<Problem>
         {
-            new Problem1(),
-            new Problem2(),
-            new Problem3(),
-            new Problem4(),
-            new Problem5(),
-            new Problem6(),
-            new Problem7(),
-            new Problem8(),
-            new Problem9()
+            new Problem001(),
+            new Problem002(),
+            new Problem003(),
+            new Problem004(),
+            new Problem005(),
+            new Problem006(),
+            new Problem007(),
+            new Problem008(),
+            new Problem009(),
+            new Problem010(),
         };
 
         public Problem GetProblem(int? problemId)

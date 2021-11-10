@@ -1,6 +1,6 @@
 ﻿namespace ConsoleApp.Problems
 {
-    public class Problem3 : Problem
+    public class Problem003 : Problem
     {
         public override int Id => 3;
         public override string Name => "Largest prime factor";

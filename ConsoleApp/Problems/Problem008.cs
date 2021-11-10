@@ -2,7 +2,7 @@
 
 namespace ConsoleApp.Problems
 {
-    public class Problem8 : Problem
+    public class Problem008 : Problem
     {
         public override int Id => 8;
         public override string Name => "Largest product in a series";

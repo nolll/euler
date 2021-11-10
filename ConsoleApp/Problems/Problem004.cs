@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace ConsoleApp.Problems
 {
-    public class Problem4 : Problem
+    public class Problem004 : Problem
     {
         public override int Id => 4;
         public override string Name => "Largest palindrome product";

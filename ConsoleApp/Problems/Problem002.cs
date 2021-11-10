@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace ConsoleApp.Problems
 {
-    public class Problem2 : Problem
+    public class Problem002 : Problem
     {
         public override int Id => 2;
         public override string Name => "Even Fibonacci numbers";

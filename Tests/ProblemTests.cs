@@ -6,84 +6,93 @@ namespace Tests
     public class ProblemTests
     {
         [Test]
-        public void TestProblem1()
+        public void TestProblem001()
         {
-            var problem = new Problem1();
+            var problem = new Problem001();
             var result = problem.Run(10);
 
             Assert.That(result, Is.EqualTo(23));
         }
 
         [Test]
-        public void TestProblem2()
+        public void TestProblem002()
         {
-            var problem = new Problem2();
+            var problem = new Problem002();
             var result = problem.Run(100);
 
             Assert.That(result, Is.EqualTo(44));
         }
 
         [Test]
-        public void TestProblem3()
+        public void TestProblem003()
         {
-            var problem = new Problem3();
+            var problem = new Problem003();
             var result = problem.Run(13195);
 
             Assert.That(result, Is.EqualTo(29));
         }
 
         [Test]
-        public void TestProblem4()
+        public void TestProblem004()
         {
-            var problem = new Problem4();
+            var problem = new Problem004();
             var result = problem.Run(10, 99);
 
             Assert.That(result, Is.EqualTo(9009));
         }
 
         [Test]
-        public void TestProblem5()
+        public void TestProblem005()
         {
-            var problem = new Problem5();
+            var problem = new Problem005();
             var result = problem.Run(10);
 
             Assert.That(result, Is.EqualTo(2520));
         }
 
         [Test]
-        public void TestProblem6()
+        public void TestProblem006()
         {
-            var problem = new Problem6();
+            var problem = new Problem006();
             var result = problem.Run(10);
 
             Assert.That(result, Is.EqualTo(2640));
         }
 
         [Test]
-        public void TestProblem7()
+        public void TestProblem007()
         {
-            var problem = new Problem7();
+            var problem = new Problem007();
             var result = problem.Run(6);
 
             Assert.That(result, Is.EqualTo(13));
         }
 
         [Test]
-        public void TestProblem8()
+        public void TestProblem008()
         {
-            var problem = new Problem8();
+            var problem = new Problem008();
             var result = problem.Run(4);
 
             Assert.That(result, Is.EqualTo(5832));
         }
 
         [Test]
-        public void TestProblem9()
+        public void TestProblem009()
         {
-            var problem = new Problem9();
+            var problem = new Problem009();
             var result = problem.Run(12);
 
             Assert.That(result, Is.EqualTo(60));
+        }
+
+        [Test]
+        public void TestProblem010()
+        {
+            var problem = new Problem010();
+            var result = problem.Run(10);
+
+            Assert.That(result, Is.EqualTo(17));
         }
     }
 }

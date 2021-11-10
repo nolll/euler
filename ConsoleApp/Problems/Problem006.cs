@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace ConsoleApp.Problems
 {
-    public class Problem6 : Problem
+    public class Problem006 : Problem
     {
         public override int Id => 6;
         public override string Name => "Sum square difference";

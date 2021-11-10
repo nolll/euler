@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 
 namespace ConsoleApp.Problems
 {
-    public class Problem9 : Problem
+    public class Problem009 : Problem
     {
         public override int Id => 9;
         public override string Name => "Special Pythagorean triplet";

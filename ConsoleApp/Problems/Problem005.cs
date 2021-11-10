@@ -1,6 +1,6 @@
 ﻿namespace ConsoleApp.Problems
 {
-    public class Problem5 : Problem
+    public class Problem005 : Problem
     {
         public override int Id => 5;
         public override string Name => "Smallest multiple";

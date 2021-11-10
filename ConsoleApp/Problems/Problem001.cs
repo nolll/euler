@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace ConsoleApp.Problems
 {
-    public class Problem1 : Problem
+    public class Problem001 : Problem
     {
         public override int Id => 1;
         public override string Name => "Multiples of 3 or 5";
