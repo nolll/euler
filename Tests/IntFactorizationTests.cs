@@ -15,7 +15,7 @@ namespace Tests
         [TestCase(28, 6)]
         public void Factors(int n, int expected)
         {
-            var factors = Tools.GetFactors(n);
+            var factors = Tools.GetIntFactors(n);
             var result = factors.Count();
 
             Assert.That(result, Is.EqualTo(expected));

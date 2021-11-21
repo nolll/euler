@@ -82,49 +82,7 @@ namespace ConsoleApp
             return largest;
         }
 
-        //public static int GetFactorCount(int num)
-        //{
-        //    var factorCount = 0;
-        //    for (var i = num; i >= 0; i--)
-        //    {
-        //        if (num % (i + 1) == 0)
-        //            factorCount++;
-        //    }
-
-        //    return factorCount;
-        //}
-
-        //public static int GetFactorCount2(int n)
-        //{
-        //    var count = 0;
-        //    while (n % 2 == 0)
-        //    {
-        //        count++;
-        //        n /= 2;
-        //    }
-
-        //    var f = 3;
-
-
-        //    while (f * f <= n)
-        //    {
-        //        if (n % f == 0)
-        //        {
-        //            count++;
-        //            n /= f;
-        //        }
-        //        else
-        //        {
-        //            f += 2;
-        //        }
-        //    }
-
-        //    if (n != 1)
-        //        count++;
-        //    return count;
-        //}
-
-        public static IEnumerable<int> GetFactors(int x)
+        public static IEnumerable<int> GetIntFactors(int x)
         {
             for (var i = 1; i * i <= x; i++)
             {
@@ -136,29 +94,5 @@ namespace ConsoleApp
                 }
             }
         }
-
-        //public static int GetFactorCount(int x)
-        //{
-        //    private int NumberOfDivisors(int number)
-        //    {
-        //        int nod = 0;
-        //        int sqrt = (int)Math.Sqrt(number);
-
-        //        for (int i = 1; i <= sqrt; i++)
-        //        {
-        //            if (number % i == 0)
-        //            {
-        //                nod += 2;
-        //            }
-        //        }
-        //        //Correction if the number is a perfect square
-        //        if (sqrt * sqrt == number)
-        //        {
-        //            nod--;
-        //        }
-
-        //        return nod;
-        //    }
-        //}
     }
 }

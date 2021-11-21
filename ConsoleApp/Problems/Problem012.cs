@@ -11,25 +11,18 @@ namespace ConsoleApp.Problems
         public override PuzzleResult Run()
         {
             var result = Run(501);
-            return new PuzzleResult(result);
+            return new PuzzleResult(result, 76576500);
         }
 
         public int Run(int maxFactorCount)
         {
             var current = 1;
             var triangle = current;
-            var highest = 0;
 
             while (true)
             {
-                var factorCount = Tools.GetFactors(triangle).Count();
+                var factorCount = Tools.GetIntFactors(triangle).Count();
 
-                if (factorCount > highest)
-                {
-                    Console.WriteLine($"Triangle: {triangle}, factors: {factorCount}");
-                    highest = factorCount;
-                }
-                
                 if (factorCount > maxFactorCount)
                     return triangle;
 
