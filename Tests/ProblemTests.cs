@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Numerics;
 using ConsoleApp.Problems;
 using NUnit.Framework;
@@ -133,6 +134,15 @@ namespace Tests
             var result = problem.Run(numbers);
 
             Assert.That(result, Is.EqualTo("6000000000"));
+        }
+
+        [Test]
+        public void TestProblem014()
+        {
+            var problem = new Problem014();
+            var result = problem.GenerateCollatzSequence(13);
+
+            Assert.That(result.Count(), Is.EqualTo(10));
         }
     }
 }
