@@ -81,5 +81,82 @@ namespace ConsoleApp
 
             return largest;
         }
+
+        public static int GetFactorCount(int num)
+        {
+            var factorCount = 0;
+            for (var i = num; i >= 0; i--)
+            {
+                if (num % (i + 1) == 0)
+                    factorCount++;
+            }
+
+            return factorCount;
+        }
+
+        public static int GetFactorCount2(int n)
+        {
+            var count = 0;
+            while (n % 2 == 0)
+            {
+                count++;
+                n /= 2;
+            }
+
+            var f = 3;
+
+
+            while (f * f <= n)
+            {
+                if (n % f == 0)
+                {
+                    count++;
+                    n /= f;
+                }
+                else
+                {
+                    f += 2;
+                }
+            }
+
+            if (n != 1)
+                count++;
+            return count;
+        }
+
+        public static List<int> GetFactors(int n)
+        {
+            var factors = new List<int> { 1 };
+
+            if (n % 2 == 0)
+                factors.Add(2);
+
+            while (n % 2 == 0)
+            {
+                factors.Add(n);
+                n /= 2;
+            }
+
+            var f = 3;
+
+
+            while (f * f <= n)
+            {
+                if (n % f == 0)
+                {
+                    factors.Add(f);
+                    n /= f;
+                }
+                else
+                {
+                    f += 2;
+                }
+            }
+
+            if (n != 1)
+                factors.Add(n);
+
+            return factors;
+        }
     }
 }
