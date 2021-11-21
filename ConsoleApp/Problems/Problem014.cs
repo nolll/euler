@@ -12,7 +12,7 @@ namespace ConsoleApp.Problems
         public override PuzzleResult Run()
         {
             var result = Run(1_000_000);
-            return new PuzzleResult(result, 910107);
+            return new PuzzleResult(result, 837799);
         }
 
         private int Run(int limit)
@@ -37,7 +37,7 @@ namespace ConsoleApp.Problems
             return longestSequence.Num;
         }
 
-        public IEnumerable<int> GenerateCollatzSequence(int n)
+        public IEnumerable<long> GenerateCollatzSequence(long n)
         {
             yield return n;
             
