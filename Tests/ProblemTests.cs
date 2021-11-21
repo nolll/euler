@@ -1,3 +1,4 @@
+using System.Numerics;
 using ConsoleApp.Problems;
 using NUnit.Framework;
 
@@ -118,6 +119,20 @@ namespace Tests
             var result = problem.Run(5);
 
             Assert.That(result, Is.EqualTo(28));
+        }
+
+        [Test]
+        public void TestProblem013()
+        {
+            const string numbers = @"
+10000000000000000000000000000000000000000000000000
+20000000000000000000000000000000000000000000000000
+30000000000000000000000000000000000000000000000000";
+
+            var problem = new Problem013();
+            var result = problem.Run(numbers);
+
+            Assert.That(result, Is.EqualTo("6000000000"));
         }
     }
 }

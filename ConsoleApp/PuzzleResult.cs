@@ -1,4 +1,6 @@
-﻿namespace ConsoleApp
+﻿using System.Numerics;
+
+namespace ConsoleApp
 {
     public class PuzzleResult
     {

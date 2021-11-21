@@ -99,11 +99,11 @@ namespace ConsoleApp.Problems
         private List<List<int>> GetMatrix(string grid)
         {
             var matrix = new List<List<int>>();
-            var rows = grid.Trim().Split("\n");
+            var rows = InputReader.ReadLines(grid);
             foreach (var row in rows)
             {
                 var itemList = new List<int>();
-                var items = row.Trim().Split(" ");
+                var items = row.Split(" ");
                 foreach (var item in items)
                 {
                     var trimmed = item.TrimStart('0');
