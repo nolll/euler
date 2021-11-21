@@ -1,3 +1,4 @@
+using System.Linq;
 using ConsoleApp;
 using NUnit.Framework;
 
@@ -12,9 +13,10 @@ namespace Tests
         [TestCase(15, 4)]
         [TestCase(21, 4)]
         [TestCase(28, 6)]
-        public void FactorCounts(int n, int expected)
+        public void Factors(int n, int expected)
         {
-            var result = Tools.GetFactorCount(n);
+            var factors = Tools.GetFactors(n);
+            var result = factors.Count();
 
             Assert.That(result, Is.EqualTo(expected));
         }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace ConsoleApp.Problems
 {
@@ -17,12 +18,18 @@ namespace ConsoleApp.Problems
         {
             var current = 1;
             var triangle = current;
+            var highest = 0;
 
-            
             while (true)
             {
-                var factorCount = Tools.GetFactorCount(triangle);
-                Console.WriteLine($"Triangle: {triangle}, factors: {factorCount}");
+                var factorCount = Tools.GetFactors(triangle).Count();
+
+                if (factorCount > highest)
+                {
+                    Console.WriteLine($"Triangle: {triangle}, factors: {factorCount}");
+                    highest = factorCount;
+                }
+                
                 if (factorCount > maxFactorCount)
                     return triangle;
 
