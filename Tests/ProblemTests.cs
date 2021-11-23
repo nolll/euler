@@ -155,5 +155,14 @@ namespace Tests
 
             Assert.That(result, Is.EqualTo(expected));
         }
+
+        [Test]
+        public void TestProblem016()
+        {
+            var problem = new Problem016();
+            var result = problem.Run(15);
+
+            Assert.That(result, Is.EqualTo(26));
+        }
     }
 }
