@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using ConsoleApp.Tools;
 
 namespace ConsoleApp.Problems
 {
@@ -16,7 +17,7 @@ namespace ConsoleApp.Problems
 
         public long Run(int limit)
         {
-            var primes = Tools.FindPrimesBelow(limit);
+            var primes = Factorization.FindPrimesBelow(limit);
 
             long sum = 0;
             foreach (var p in primes)

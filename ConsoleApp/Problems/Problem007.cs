@@ -1,4 +1,6 @@
-﻿namespace ConsoleApp.Problems
+﻿using ConsoleApp.Tools;
+
+namespace ConsoleApp.Problems
 {
     public class Problem007 : Problem
     {
@@ -20,7 +22,7 @@
             
             while (primeCount < index)
             {
-                if (Tools.IsPrime(i))
+                if (Factorization.IsPrime(i))
                 {
                     lastPrime = i;
                     primeCount++;

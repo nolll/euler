@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using ConsoleApp.Tools;
 
 namespace ConsoleApp.Problems
 {
@@ -15,7 +16,7 @@ namespace ConsoleApp.Problems
 
         public long Run(string grid)
         {
-            var matrix = GetMatrix(grid);
+            var matrix = BuildMatrix(grid);
             var sumFinder = new GridProductFinder(matrix);
             var largestSum = sumFinder.FindLargestSum();
             
@@ -24,11 +25,11 @@ namespace ConsoleApp.Problems
 
         private class GridProductFinder
         {
-            private readonly List<List<int>> _matrix;
+            private readonly Matrix<int> _matrix;
             private int _x;
             private int _y;
 
-            public GridProductFinder(List<List<int>> matrix)
+            public GridProductFinder(Matrix<int> matrix)
             {
                 _matrix = matrix;
                 _x = 0;
@@ -50,9 +51,9 @@ namespace ConsoleApp.Problems
                 };
                 
                 var largestSum = 0;
-                for (_y = 0; _y < _matrix.Count; _y++)
+                for (_y = 0; _y < _matrix.Height; _y++)
                 {
-                    for (_x = 0; _x < _matrix[_y].Count; _x++)
+                    for (_x = 0; _x < _matrix.Width; _x++)
                     {
                         foreach (var (dx, dy) in deltas)
                         {
@@ -77,7 +78,7 @@ namespace ConsoleApp.Problems
                     if (!IsInMatrix(x, y))
                         return 0;
 
-                    var num = _matrix[y][x];
+                    var num = _matrix.ReadValueAt(new MatrixAddress(x, y));
                     sum *= num;
                 }
 
@@ -89,31 +90,34 @@ namespace ConsoleApp.Problems
                 if (x < 0 || y < 0)
                     return false;
 
-                if (y >= _matrix.Count || x >= _matrix[0].Count)
+                if (y >= _matrix.Height || x >= _matrix.Width)
                     return false;
 
                 return true;
             }
         }
-        
-        private List<List<int>> GetMatrix(string grid)
+
+        private static Matrix<int> BuildMatrix(string input, char defaultValue = default)
         {
-            var matrix = new List<List<int>>();
-            var rows = InputReader.ReadLines(grid);
+            var matrix = new Matrix<int>(1, 1, defaultValue);
+            var rows = input.Trim().Split('\n');
+            var y = 0;
             foreach (var row in rows)
             {
-                var itemList = new List<int>();
-                var items = row.Split(" ");
+                var x = 0;
+                var items = row.Trim().Split(" ");
                 foreach (var item in items)
                 {
                     var trimmed = item.TrimStart('0');
                     var num = trimmed.Length > 0
                         ? int.Parse(trimmed)
                         : 0;
-                    itemList.Add(num);
+                    matrix.MoveTo(x, y);
+                    matrix.WriteValue(num);
+                    x += 1;
                 }
 
-                matrix.Add(itemList);
+                y += 1;
             }
 
             return matrix;

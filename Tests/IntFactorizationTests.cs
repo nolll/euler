@@ -1,5 +1,6 @@
 using System.Linq;
 using ConsoleApp;
+using ConsoleApp.Tools;
 using NUnit.Framework;
 
 namespace Tests
@@ -15,7 +16,7 @@ namespace Tests
         [TestCase(28, 6)]
         public void Factors(int n, int expected)
         {
-            var factors = Tools.GetIntFactors(n);
+            var factors = Factorization.GetIntFactors(n);
             var result = factors.Count();
 
             Assert.That(result, Is.EqualTo(expected));

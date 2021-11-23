@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ConsoleApp
+namespace ConsoleApp.Tools
 {
-    public static class Tools
+    public static class Factorization
     {
         public static IEnumerable<int> FindPrimesBelow(int limit)
         {

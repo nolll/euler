@@ -1,4 +1,6 @@
-﻿namespace ConsoleApp.Problems
+﻿using ConsoleApp.Tools;
+
+namespace ConsoleApp.Problems
 {
     public class Problem003 : Problem
     {
@@ -14,7 +16,7 @@
 
         public long Run(long number)
         {
-            return Tools.FindLargestPrimeFactor(number);
+            return Factorization.FindLargestPrimeFactor(number);
         }
     }
 }

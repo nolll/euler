@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using ConsoleApp.Tools;
 
 namespace ConsoleApp.Problems
 {
@@ -21,7 +22,7 @@ namespace ConsoleApp.Problems
 
             while (true)
             {
-                var factorCount = Tools.GetIntFactors(triangle).Count();
+                var factorCount = Factorization.GetIntFactors(triangle).Count();
 
                 if (factorCount > maxFactorCount)
                     return triangle;
