@@ -144,5 +144,16 @@ namespace Tests
 
             Assert.That(result.Count(), Is.EqualTo(10));
         }
+
+        [TestCase(2, 6)]
+        [TestCase(3, 20)]
+        [TestCase(4, 70)]
+        public void TestProblem015(int gridSize, long expected)
+        {
+            var problem = new Problem015();
+            var result = problem.Run(gridSize);
+
+            Assert.That(result, Is.EqualTo(expected));
+        }
     }
 }
