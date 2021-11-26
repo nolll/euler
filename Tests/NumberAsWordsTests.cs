@@ -17,7 +17,7 @@ namespace Tests
         [TestCase(1000, "one thousand")]
         public void Factors(int n, string expected)
         {
-            var result = StringTools.NumberAsWords(n);
+            var result = new NumberAsString(n).ToString();
 
             Assert.That(result, Is.EqualTo(expected));
         }

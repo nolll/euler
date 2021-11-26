@@ -21,7 +21,7 @@ namespace ConsoleApp.Problems
             var strings = new List<string>();
             for (var i = 1; i <= target; i++)
             {
-                var numberAsWords = StringTools.NumberAsWords(i);
+                var numberAsWords = new NumberAsString(i).ToString();
                 strings.Add(numberAsWords);
             }
 

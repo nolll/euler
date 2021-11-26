@@ -1,27 +1,31 @@
-﻿using System;
-using System.Linq;
-
-namespace ConsoleApp.Tools
+﻿namespace ConsoleApp.Tools
 {
-    public static class StringTools
+    public class NumberAsString
     {
-        public static string NumberAsWords(int n)
+        private readonly int _number;
+
+        public NumberAsString(int number)
         {
-            var s = n.ToString();
+            _number = number;
+        }
+
+        public override string ToString()
+        {
+            var s = _number.ToString();
 
             if (s.Length == 4)
                 return GetWordsForFourDigits();
 
             if (s.Length == 3)
-                return GetWordsForThreeDigits(n);
+                return GetWordsForThreeDigits(_number);
 
             if (s.Length == 2)
-                return GetWordsForTwoDigits(n);
+                return GetWordsForTwoDigits(_number);
 
-            return GetWordsForOneDigit(n);
+            return GetWordsForOneDigit(_number);
         }
 
-        private static string GetWordsForOneDigit(int n)
+        private string GetWordsForOneDigit(int n)
         {
             switch (n)
             {
@@ -48,14 +52,14 @@ namespace ConsoleApp.Tools
             return "";
         }
 
-        private static string GetWordsForTwoDigits(int n)
+        private string GetWordsForTwoDigits(int n)
         {
             return n < 20
                 ? GetWordsForLowTwoDigits(n)
                 : GetWordsForHighTwoDigits(n);
         }
 
-        private static string GetWordsForHighTwoDigits(int n)
+        private string GetWordsForHighTwoDigits(int n)
         {
             var s = n.ToString();
             var tens = GetWordsForTens(int.Parse(s.Substring(0, 1)));
@@ -65,7 +69,7 @@ namespace ConsoleApp.Tools
             return $"{tens}{singles}";
         }
 
-        private static string GetWordsForTens(int n)
+        private string GetWordsForTens(int n)
         {
             switch (n)
             {
@@ -90,7 +94,7 @@ namespace ConsoleApp.Tools
             return "";
         }
 
-        private static string GetWordsForThreeDigits(int n)
+        private string GetWordsForThreeDigits(int n)
         {
             var s = n.ToString();
             var hundreds = GetWordsForHundreds(int.Parse(s.Substring(0, 1)));
@@ -102,7 +106,7 @@ namespace ConsoleApp.Tools
                 : hundreds;
         }
 
-        private static string GetWordsForLowTwoDigits(int n)
+        private string GetWordsForLowTwoDigits(int n)
         {
             if (n < 10)
                 return GetWordsForOneDigit(n);
@@ -134,12 +138,12 @@ namespace ConsoleApp.Tools
             return "";
         }
 
-        private static string GetWordsForFourDigits()
+        private string GetWordsForFourDigits()
         {
             return "one thousand";
         }
 
-        private static string GetWordsForHundreds(int n)
+        private string GetWordsForHundreds(int n)
         {
             return $"{GetWordsForOneDigit(n)} hundred";
         }
