@@ -173,5 +173,20 @@ namespace Tests
 
             Assert.That(result, Is.EqualTo(19));
         }
+
+        [Test]
+        public void TestProblem018()
+        {
+            const string triangle = @"
+3
+7 4
+2 4 6
+8 5 9 3";
+
+            var problem = new Problem018();
+            var result = problem.Run(triangle);
+
+            Assert.That(result, Is.EqualTo(23));
+        }
     }
 }
