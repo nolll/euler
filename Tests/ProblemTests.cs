@@ -201,5 +201,14 @@ namespace Tests
 
             Assert.That(result, Is.EqualTo(2));
         }
+
+        [Test]
+        public void TestProblem020()
+        {
+            var problem = new Problem020();
+            var result = problem.Run(10);
+
+            Assert.That(result, Is.EqualTo(27));
+        }
     }
 }
