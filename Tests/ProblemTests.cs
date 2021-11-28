@@ -216,13 +216,22 @@ namespace Tests
         {
             const int a = 220;
             const int b = 284;
-            
+
             var problem = new Problem021();
             var sumA = problem.GetFactorialSum(a);
             var sumB = problem.GetFactorialSum(b);
 
             Assert.That(sumA, Is.EqualTo(b));
             Assert.That(sumB, Is.EqualTo(a));
+        }
+
+        [Test]
+        public void TestProblem022()
+        {
+            var problem = new Problem022();
+            var result = problem.GetNameScore("COLIN");
+            
+            Assert.That(result, Is.EqualTo(49714));
         }
     }
 }
