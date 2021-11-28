@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ConsoleApp.Tools
 {
@@ -82,7 +83,7 @@ namespace ConsoleApp.Tools
             return largest;
         }
 
-        public static IEnumerable<int> GetIntFactors(int x)
+        public static IEnumerable<int> GetAllDivisors(int x)
         {
             for (var i = 1; i * i <= x; i++)
             {
@@ -93,6 +94,11 @@ namespace ConsoleApp.Tools
                         yield return x / i;
                 }
             }
+        }
+
+        public static IEnumerable<int> GetProperDivisors(int x)
+        {
+            return GetAllDivisors(x).OrderBy(o => o).SkipLast(1);
         }
     }
 }

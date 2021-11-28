@@ -22,7 +22,7 @@ namespace ConsoleApp.Problems
 
             while (true)
             {
-                var factorCount = Factorization.GetIntFactors(triangle).Count();
+                var factorCount = Factorization.GetAllDivisors(triangle).Count();
 
                 if (factorCount > maxFactorCount)
                     return triangle;

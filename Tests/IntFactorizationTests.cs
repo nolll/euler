@@ -16,7 +16,7 @@ namespace Tests
         [TestCase(28, 6)]
         public void Factors(int n, int expected)
         {
-            var factors = Factorization.GetIntFactors(n);
+            var factors = Factorization.GetAllDivisors(n);
             var result = factors.Count();
 
             Assert.That(result, Is.EqualTo(expected));

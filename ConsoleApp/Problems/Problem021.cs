@@ -50,7 +50,7 @@ namespace ConsoleApp.Problems
 
         public int GetFactorialSum(int n)
         {
-            var factors = Factorization.GetIntFactors(n).OrderBy(o => o).SkipLast(1);
+            var factors = Factorization.GetProperDivisors(n);
             return factors.Sum();
         }
     }

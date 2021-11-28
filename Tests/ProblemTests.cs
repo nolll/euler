@@ -230,8 +230,17 @@ namespace Tests
         {
             var problem = new Problem022();
             var result = problem.GetNameScore("COLIN");
-            
+
             Assert.That(result, Is.EqualTo(49714));
+        }
+
+        [Test]
+        public void TestProblem023()
+        {
+            var problem = new Problem023();
+            var result = problem.FindAbundantNumbers(13);
+
+            Assert.That(result.Count(), Is.EqualTo(1));
         }
     }
 }
