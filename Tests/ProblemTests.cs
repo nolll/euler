@@ -210,5 +210,19 @@ namespace Tests
 
             Assert.That(result, Is.EqualTo(27));
         }
+
+        [Test]
+        public void TestProblem021()
+        {
+            const int a = 220;
+            const int b = 284;
+            
+            var problem = new Problem021();
+            var sumA = problem.GetFactorialSum(a);
+            var sumB = problem.GetFactorialSum(b);
+
+            Assert.That(sumA, Is.EqualTo(b));
+            Assert.That(sumB, Is.EqualTo(a));
+        }
     }
 }
