@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using System.Numerics;
 using ConsoleApp.Problems;
@@ -187,6 +188,18 @@ namespace Tests
             var result = problem.Run(triangle);
 
             Assert.That(result, Is.EqualTo(23));
+        }
+
+        [Test]
+        public void TestProblem019()
+        {
+            var startDate = DateTime.Parse("2020-01-01");
+            var endDate = DateTime.Parse("2020-12-31");
+
+            var problem = new Problem019();
+            var result = problem.Run(startDate, endDate);
+
+            Assert.That(result, Is.EqualTo(2));
         }
     }
 }
