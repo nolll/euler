@@ -242,5 +242,14 @@ namespace Tests
 
             Assert.That(result.Count(), Is.EqualTo(1));
         }
+
+        [Test]
+        public void TestProblem025()
+        {
+            var problem = new Problem025();
+            var result = problem.Run(3);
+
+            Assert.That(result, Is.EqualTo(12));
+        }
     }
 }
