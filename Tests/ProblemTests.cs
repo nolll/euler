@@ -258,16 +258,7 @@ namespace Tests
             var problem = new Problem026();
             var result = problem.Run(10);
 
-            Assert.That(result, Is.EqualTo(6));
-        }
-
-        [Test]
-        public void TestProblem026_2()
-        {
-            var problem = new Problem026();
-            var result = problem.GetRepeatLength("142857142857142857");
-
-            Assert.That(result, Is.EqualTo(6));
+            Assert.That(result, Is.EqualTo(7));
         }
     }
 }
