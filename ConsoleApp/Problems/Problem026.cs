@@ -39,29 +39,28 @@ namespace ConsoleApp.Problems
             return maxRepeatLength;
         }
 
-        public int GetRepeatLength(string s)
+        public int GetRepeatLength(string input)
         {
-            if (s.Length == 0)
+            if (input.Length == 0)
                 return 0;
-            
-            var length = 1;
-            var substring = s.Substring(s.Length - length);
-            var maxCount = 0;
 
-            while (substring.Length < s.Length)
+            var repeatLength = 0;
+            var regex = new Regex("^(.+?)(?:\\1)+");
+            var s = input;
+            while (s.Length > 0)
             {
-                var count = Regex.Matches(s, substring).Count;
-                if (count > maxCount)
-                    maxCount = count;
-                
-                if (count < maxCount - 1)
-                    return length - 1;
+                var matches = regex.Match(s);
+                var match = matches.Groups.Count > 0
+                    ? matches.Groups[1].Value
+                    : null;
 
-                length++;
-                substring = s.Substring(s.Length - length);
+                if (match?.Length > repeatLength)
+                    repeatLength = match.Length;
+
+                s = s.Substring(1);
             }
 
-            return 0;
+            return repeatLength;
         }
     }
 }
