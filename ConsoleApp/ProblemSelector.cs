@@ -33,7 +33,8 @@ namespace ConsoleApp
             new Problem023(),
             new Problem024(),
             new Problem025(),
-            new Problem026()
+            new Problem026(),
+            new Problem027()
         };
 
         public Problem GetProblem(int? problemId)

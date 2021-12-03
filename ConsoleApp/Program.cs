@@ -9,7 +9,7 @@ namespace ConsoleApp
         private static ProblemSelector _problemSelector;
         private const int PuzzleTimeout = 10;
 
-        private const int DebugProblem = 26;
+        private const int DebugProblem = 27;
 
         static void Main(string[] args)
         {
