@@ -6,7 +6,7 @@ namespace Tests.ProblemTests
     public class Problem027Tests
     {
         [Test]
-        public void Test1()
+        public void Test()
         {
             var problem = new Problem027();
             var result = problem.GetPrimeCount(-79, 1601);

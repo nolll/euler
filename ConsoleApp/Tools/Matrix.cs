@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 
@@ -214,7 +215,10 @@ namespace ConsoleApp.Tools
                     else if (markStartAddress && x == StartAddress.X && y == StartAddress.Y)
                         sb.Append('S');
                     else
+                    {
                         sb.Append(o);
+                        sb.Append(' ');
+                    }
 
                     x += 1;
                 }
