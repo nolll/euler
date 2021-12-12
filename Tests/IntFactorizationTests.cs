@@ -1,6 +1,6 @@
 using System.Linq;
+using App.Common.Numbers;
 using ConsoleApp;
-using ConsoleApp.Tools;
 using NUnit.Framework;
 
 namespace Tests

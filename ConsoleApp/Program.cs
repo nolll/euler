@@ -1,49 +1,87 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using App.Platform;
+using ConsoleApp.ConsoleTools;
+using ConsoleApp.Printing;
 
 namespace ConsoleApp
 {
     public class Program
     {
-        private static ProblemSelector _problemSelector;
         private const int PuzzleTimeout = 10;
 
         private const int DebugProblem = 30;
 
         static void Main(string[] args)
         {
-            _problemSelector = new ProblemSelector();
-            var parameters = Parameters.Parse(args);
+            var parameters = ParseParameters(args);
 
             if (parameters.ShowHelp)
-            {
-                var helpPrinter = new HelpPrinter();
-                helpPrinter.Print();
-                return;
-            }
-            
-            if (parameters.ProblemId == null)
-            {
-#if DEBUG
-                parameters = new Parameters(problemId: DebugProblem);
-#else
-                var allProblems = _problemSelector.GetAll();
-                var filteredProblems = FilterProblems(allProblems, parameters);
-                var allRunner = new PuzzleRunner(timeout: PuzzleTimeout);
-                allRunner.Run(filteredProblems);
-                return;
-#endif
-            }
+                ShowHelp();
+            else
+                RunPuzzles(parameters);
+        }
 
-            var problem = _problemSelector.GetProblem(parameters.ProblemId);
-            if (problem == null)
-            {
+        private static void RunPuzzles(Parameters parameters)
+        {
+            if (parameters.ProblemId != null)
+                RunSingle(parameters);
+            else
+                RunAll(parameters);
+        }
+
+        private static void RunSingle(Parameters parameters)
+        {
+            var puzzleRepository = new ProblemRepository();
+            var foundProblem = puzzleRepository.GetProblem(parameters.ProblemId);
+            if (foundProblem == null)
                 throw new Exception("The specified problem could not be found.");
-            }
 
-            var problemRunner = new PuzzleRunner(throwExceptions: true);
-            problemRunner.Run(problem);
+            RunDays(new List<Problem> { foundProblem }, null, true);
+        }
+        
+        private static void RunAll(Parameters parameters)
+        {
+            var puzzleRepository = new ProblemRepository();
+            var allProblems = puzzleRepository.GetAll();
+            var filteredProblems = FilterProblems(allProblems, parameters);
+            RunDays(filteredProblems, PuzzleTimeout, false);
+        }
+
+        private static void RunDays(IList<Problem> days, int? timeout, bool throwExceptions)
+        {
+            var runner = GetPuzzleRunner(timeout, throwExceptions);
+
+            if (days.Count == 1)
+                runner.Run(days.First());
+            else
+                runner.Run(days);
+        }
+
+        private static void ShowHelp()
+        {
+            var helpPrinter = new HelpPrinter();
+            helpPrinter.Print();
+        }
+
+        private static Parameters ParseParameters(string[] args)
+        {
+            return Parameters.Parse(args);
+        }
+
+        private static Parameters ParseParameters1(string[] args)
+        {
+#if DEBUG
+            return new Parameters(problemId: DebugProblem);
+#else
+            return Parameters.Parse(args);
+#endif
+        }
+
+        private static PuzzleRunner GetPuzzleRunner(int? timeout, bool throwExceptions)
+        {
+            return new PuzzleRunner(new SingleProblemPrinter(), new MultiProblemPrinter(timeout), throwExceptions, timeout);
         }
 
         private static IList<Problem> FilterProblems(IList<Problem> problems, Parameters parameters)

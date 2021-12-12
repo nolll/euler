@@ -1,5 +1,5 @@
 using System;
-using ConsoleApp.Problems;
+using App.Puzzles;
 using NUnit.Framework;
 
 namespace Tests.ProblemTests

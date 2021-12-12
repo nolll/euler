@@ -1,4 +1,4 @@
-using ConsoleApp.Tools;
+using App.Common.Strings;
 using NUnit.Framework;
 
 namespace Tests
