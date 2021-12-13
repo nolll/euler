@@ -15,7 +15,7 @@
             _timeout = timeout;
         }
 
-        public void Run(IList<Problem> problems)
+        public void Run(IList<ProblemWrapper> problems)
         {
             _multiProblemPrinter.PrintHeader();
             foreach (var problem in problems)
@@ -26,17 +26,17 @@
             _multiProblemPrinter.PrintFooter();
         }
 
-        public void Run(Problem problem)
+        public void Run(ProblemWrapper problem)
         {
             var result = RunProblem(problem);
             _singleProblemPrinter.PrintProblem(result);
         }
 
-        private ProblemResult RunProblem(Problem problem)
+        private ProblemWrapperResult RunProblem(ProblemWrapper problem)
         {
-            var p1 = RunPuzzleWithTimer(problem.Run, problem.IsSlow);
+            var p1 = RunPuzzleWithTimer(problem.Problem.Run, problem.Problem.IsSlow);
 
-            return new ProblemResult(problem, p1, problem.Comment);
+            return new ProblemWrapperResult(problem, p1, problem.Problem.Comment);
         }
 
         private TimedPuzzleResult RunPuzzleWithTimer(Func<PuzzleResult> func, bool isSlow)

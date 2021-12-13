@@ -7,8 +7,9 @@ namespace App.Puzzles.Puzzle024
     {
         private const int UpperLimit = 28123;
 
-        public override int Id => 24;
         public override string Name => "Lexicographic permutations";
+        public override bool IsSlow => true;
+        public override bool NeedsRewrite => true;
 
         public override PuzzleResult Run()
         {

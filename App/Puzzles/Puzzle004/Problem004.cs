@@ -4,7 +4,6 @@ namespace App.Puzzles.Puzzle004
 {
     public class Problem004 : Problem
     {
-        public override int Id => 4;
         public override string Name => "Largest palindrome product";
 
         public override PuzzleResult Run()

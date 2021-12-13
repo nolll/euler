@@ -4,7 +4,6 @@ namespace App.Puzzles.Puzzle006
 {
     public class Problem006 : Problem
     {
-        public override int Id => 6;
         public override string Name => "Sum square difference";
 
         public override PuzzleResult Run()

@@ -6,7 +6,6 @@ namespace App.Puzzles.Puzzle022
     {
         private readonly Dictionary<string, int> _nameScores;
 
-        public override int Id => 22;
         public override string Name => "Names scores";
 
         public Problem022()

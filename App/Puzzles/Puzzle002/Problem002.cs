@@ -4,7 +4,6 @@ namespace App.Puzzles.Puzzle002
 {
     public class Problem002 : Problem
     {
-        public override int Id => 2;
         public override string Name => "Even Fibonacci numbers";
 
         public override PuzzleResult Run()

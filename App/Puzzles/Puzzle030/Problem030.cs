@@ -4,7 +4,6 @@ namespace App.Puzzles.Puzzle030
 {
     public class Problem030 : Problem
     {
-        public override int Id => 30;
         public override string Name => "Digit fifth powers";
 
         public override PuzzleResult Run()

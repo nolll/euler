@@ -5,7 +5,6 @@ namespace App.Puzzles.Puzzle027
 {
     public class Problem027 : Problem
     {
-        public override int Id => 27;
         public override string Name => "Quadratic primes";
         private readonly Dictionary<int, bool> _primeCache;
 

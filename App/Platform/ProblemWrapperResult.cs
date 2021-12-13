@@ -1,12 +1,12 @@
 ﻿namespace App.Platform
 {
-    public class ProblemResult
+    public class ProblemWrapperResult
     {
-        public Problem Problem { get; }
+        public ProblemWrapper Problem { get; }
         public TimedPuzzleResult Result { get; }
         public string Comment { get; }
 
-        public ProblemResult(Problem problem, TimedPuzzleResult result, string comment)
+        public ProblemWrapperResult(ProblemWrapper problem, TimedPuzzleResult result, string comment)
         {
             Problem = problem;
             Result = result;

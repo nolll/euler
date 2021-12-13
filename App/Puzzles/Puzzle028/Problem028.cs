@@ -5,7 +5,6 @@ namespace App.Puzzles.Puzzle028
 {
     public class Problem028 : Problem
     {
-        public override int Id => 28;
         public override string Name => "Number spiral diagonals";
 
         public override PuzzleResult Run()

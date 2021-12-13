@@ -15,20 +15,20 @@ namespace Cli.Printing
 
         public void PrintHeader()
         {
-            Console.WriteLine("-------------------------------------------------------");
-            Console.WriteLine("| problem     | result     | comment                  |");
-            Console.WriteLine("-------------------------------------------------------");
+            Console.WriteLine("------------------------------------------------------");
+            Console.WriteLine("| problem     | result     | comment                 |");
+            Console.WriteLine("------------------------------------------------------");
         }
 
-        public void PrintProblem(ProblemResult problemResult)
+        public void PrintProblem(ProblemWrapperResult problemWrapperResult)
         {
-            var problem = problemResult.Problem.Id.ToString().PadLeft(2, '0');
+            var problem = problemWrapperResult.Problem.Id.ToString().PadLeft(2, '0');
             var problemTitle = $"Problem {problem}";
-            var result = GetTableResult(problemResult.Result).PadRight(10, ' ');
-            var resultColor = GetColor(problemResult.Result);
-            var comment = problemResult.Comment.Length > (CommentLength - 3)
-                ? problemResult.Comment.Substring(0, CommentLength - 3) + "..."
-                : problemResult.Comment;
+            var result = GetTableResult(problemWrapperResult.Result).PadRight(10, ' ');
+            var resultColor = GetColor(problemWrapperResult.Result);
+            var comment = problemWrapperResult.Comment.Length > (CommentLength - 3)
+                ? problemWrapperResult.Comment.Substring(0, CommentLength - 3) + "..."
+                : problemWrapperResult.Comment;
             var paddedComment = comment.PadRight(CommentLength, ' ');
 
             Console.Write("| ");

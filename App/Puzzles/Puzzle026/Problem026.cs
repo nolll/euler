@@ -6,7 +6,6 @@ namespace App.Puzzles.Puzzle026
 {
     public class Problem026 : Problem
     {
-        public override int Id => 26;
         public override string Name => "Reciprocal cycles";
         public override string Comment => "My original solution involved regex and is left as the RunSlow method. At least I learned something!";
 

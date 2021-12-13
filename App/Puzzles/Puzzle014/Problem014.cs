@@ -4,7 +4,6 @@ namespace App.Puzzles.Puzzle014
 {
     public class Problem014 : Problem
     {
-        public override int Id => 14;
         public override string Name => "Longest Collatz sequence";
         
         public override PuzzleResult Run()

@@ -5,7 +5,6 @@ namespace App.Puzzles.Puzzle017
 {
     public class Problem017 : Problem
     {
-        public override int Id => 17;
         public override string Name => "Number letter counts";
 
         public override PuzzleResult Run()

@@ -2,5 +2,5 @@
 
 public interface ISingleProblemPrinter
 {
-    void PrintProblem(ProblemResult dayResult);
+    void PrintProblem(ProblemWrapperResult dayWrapperResult);
 }

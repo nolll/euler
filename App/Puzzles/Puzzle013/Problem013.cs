@@ -6,7 +6,6 @@ namespace App.Puzzles.Puzzle013
 {
     public class Problem013 : Problem
     {
-        public override int Id => 13;
         public override string Name => "Large sum";
         
         public override PuzzleResult Run()

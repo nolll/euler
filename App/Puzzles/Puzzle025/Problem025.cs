@@ -5,7 +5,6 @@ namespace App.Puzzles.Puzzle025
 {
     public class Problem025 : Problem
     {
-        public override int Id => 25;
         public override string Name => "1000-digit Fibonacci number";
 
         public override PuzzleResult Run()

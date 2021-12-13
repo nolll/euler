@@ -7,7 +7,6 @@ namespace App.Puzzles.Puzzle023
     {
         private const int UpperLimit = 28123;
 
-        public override int Id => 23;
         public override string Name => "Non-abundant sums";
 
         public override PuzzleResult Run()

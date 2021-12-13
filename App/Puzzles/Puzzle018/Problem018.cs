@@ -5,7 +5,6 @@ namespace App.Puzzles.Puzzle018
 {
     public class Problem018 : Problem
     {
-        public override int Id => 18;
         public override string Name => "Maximum path sum I";
 
         public override PuzzleResult Run()

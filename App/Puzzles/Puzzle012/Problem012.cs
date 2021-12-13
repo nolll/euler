@@ -5,7 +5,6 @@ namespace App.Puzzles.Puzzle012
 {
     public class Problem012 : Problem
     {
-        public override int Id => 12;
         public override string Name => "Highly divisible triangular number";
         
         public override PuzzleResult Run()

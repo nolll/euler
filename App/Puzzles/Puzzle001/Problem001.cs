@@ -4,7 +4,6 @@ namespace App.Puzzles.Puzzle001
 {
     public class Problem001 : Problem
     {
-        public override int Id => 1;
         public override string Name => "Multiples of 3 or 5";
 
         public override PuzzleResult Run()

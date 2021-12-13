@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using App;
 using App.Platform;
 using Cli.ConsoleTools;
 using Cli.Printing;
@@ -35,10 +36,8 @@ namespace Cli
         {
             var puzzleRepository = new ProblemRepository();
             var foundProblem = puzzleRepository.GetProblem(parameters.ProblemId);
-            if (foundProblem == null)
-                throw new Exception("The specified problem could not be found.");
 
-            RunDays(new List<Problem> { foundProblem }, null, true);
+            RunDays(new List<ProblemWrapper> { foundProblem }, null, true);
         }
         
         private static void RunAll(Parameters parameters)
@@ -49,7 +48,7 @@ namespace Cli
             RunDays(filteredProblems, PuzzleTimeout, false);
         }
 
-        private static void RunDays(IList<Problem> days, int? timeout, bool throwExceptions)
+        private static void RunDays(IList<ProblemWrapper> days, int? timeout, bool throwExceptions)
         {
             var runner = GetPuzzleRunner(timeout, throwExceptions);
 
@@ -84,13 +83,13 @@ namespace Cli
             return new PuzzleRunner(new SingleProblemPrinter(), new MultiProblemPrinter(timeout), throwExceptions, timeout);
         }
 
-        private static IList<Problem> FilterProblems(IList<Problem> problems, Parameters parameters)
+        private static IList<ProblemWrapper> FilterProblems(IList<ProblemWrapper> problems, Parameters parameters)
         {
             if (parameters.RunSlowOnly)
-                return problems.Where(o => o.IsSlow).ToList();
+                return problems.Where(o => o.Problem.IsSlow).ToList();
 
             if (parameters.RunCommentedOnly)
-                return problems.Where(o => !string.IsNullOrEmpty(o.Comment)).ToList();
+                return problems.Where(o => !string.IsNullOrEmpty(o.Problem.Comment)).ToList();
 
             return problems;
         }

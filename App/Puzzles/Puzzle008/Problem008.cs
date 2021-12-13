@@ -4,7 +4,6 @@ namespace App.Puzzles.Puzzle008
 {
     public class Problem008 : Problem
     {
-        public override int Id => 8;
         public override string Name => "Largest product in a series";
 
         public override PuzzleResult Run()

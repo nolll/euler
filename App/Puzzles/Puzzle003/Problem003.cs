@@ -5,7 +5,6 @@ namespace App.Puzzles.Puzzle003
 {
     public class Problem003 : Problem
     {
-        public override int Id => 3;
         public override string Name => "Largest prime factor";
 
         public override PuzzleResult Run()

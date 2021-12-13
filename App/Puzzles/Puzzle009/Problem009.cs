@@ -4,7 +4,6 @@ namespace App.Puzzles.Puzzle009
 {
     public class Problem009 : Problem
     {
-        public override int Id => 9;
         public override string Name => "Special Pythagorean triplet";
         
         public override PuzzleResult Run()

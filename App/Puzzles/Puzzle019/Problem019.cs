@@ -4,7 +4,6 @@ namespace App.Puzzles.Puzzle019
 {
     public class Problem019 : Problem
     {
-        public override int Id => 19;
         public override string Name => "Counting Sundays";
 
         public override PuzzleResult Run()

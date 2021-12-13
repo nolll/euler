@@ -9,8 +9,4 @@
     <ProjectReference Include="..\App\App.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Tools\" />
-  </ItemGroup>
-
 </Project>

@@ -5,7 +5,6 @@ namespace App.Puzzles.Puzzle010
 {
     public class Problem010 : Problem
     {
-        public override int Id => 10;
         public override string Name => "Summation of primes";
         
         public override PuzzleResult Run()

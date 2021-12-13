@@ -5,7 +5,6 @@ namespace App.Puzzles.Puzzle021
 {
     public class Problem021 : Problem
     {
-        public override int Id => 21;
         public override string Name => "Amicable numbers";
 
         public override PuzzleResult Run()

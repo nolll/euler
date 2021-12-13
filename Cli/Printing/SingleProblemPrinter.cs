@@ -7,11 +7,11 @@ namespace Cli.Printing
     {
         private const string Divider = "--------------------------------------------------";
 
-        public void PrintProblem(ProblemResult problemResult)
+        public void PrintProblem(ProblemWrapperResult problemWrapperResult)
         {
-            PrintProblemTitle(problemResult.Problem);
-            PrintPuzzle(1, problemResult.Result);
-            PrintProblemEnd(problemResult, problemResult.Result.TimeTaken);
+            PrintProblemTitle(problemWrapperResult.Problem);
+            PrintPuzzle(1, problemWrapperResult.Result);
+            PrintProblemEnd(problemWrapperResult, problemWrapperResult.Result.TimeTaken);
         }
 
         private void PrintPuzzle(int part, TimedPuzzleResult puzzleResult)
@@ -30,21 +30,22 @@ namespace Cli.Printing
             ResetColor();
             Console.WriteLine();
         }
-
-        private static void PrintProblemTitle(Problem problem)
+        
+        private static void PrintProblemTitle(ProblemWrapper problem)
         {
             Console.WriteLine();
             Console.WriteLine($"Problem {problem.Id}:");
+            Console.WriteLine($"{problem.Problem.Name}");
             PrintDivider();
         }
 
-        private void PrintProblemEnd(ProblemResult problemResult, TimeSpan timeTaken)
+        private void PrintProblemEnd(ProblemWrapperResult problemWrapperResult, TimeSpan timeTaken)
         {
             PrintDivider();
-            if (!string.IsNullOrEmpty(problemResult.Comment))
+            if (!string.IsNullOrEmpty(problemWrapperResult.Comment))
             {
                 SetColor(ConsoleColor.Yellow);
-                Console.WriteLine(problemResult.Comment);
+                Console.WriteLine(problemWrapperResult.Comment);
                 ResetColor();
                 PrintDivider();
             }

@@ -5,7 +5,6 @@ namespace App.Puzzles.Puzzle020
 {
     public class Problem020 : Problem
     {
-        public override int Id => 20;
         public override string Name => "Factorial digit sum";
 
         public override PuzzleResult Run()

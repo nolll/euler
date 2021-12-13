@@ -3,6 +3,6 @@
 public interface IMultiProblemPrinter
 {
     void PrintHeader();
-    void PrintProblem(ProblemResult dayResult);
+    void PrintProblem(ProblemWrapperResult dayWrapperResult);
     void PrintFooter();
 }

@@ -4,7 +4,6 @@ namespace App.Puzzles.Puzzle015
 {
     public class Problem015 : Problem
     {
-        public override int Id => 15;
         public override string Name => "Lattice paths";
 
         public override PuzzleResult Run()
