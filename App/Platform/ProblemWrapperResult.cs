@@ -3,10 +3,10 @@
     public class ProblemWrapperResult
     {
         public ProblemWrapper Problem { get; }
-        public TimedPuzzleResult Result { get; }
+        public TimedProblemResult Result { get; }
         public string Comment { get; }
 
-        public ProblemWrapperResult(ProblemWrapper problem, TimedPuzzleResult result, string comment)
+        public ProblemWrapperResult(ProblemWrapper problem, TimedProblemResult result, string comment)
         {
             Problem = problem;
             Result = result;

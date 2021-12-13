@@ -45,24 +45,24 @@ namespace Cli.Printing
             Console.WriteLine();
         }
 
-        private string GetTableResult(TimedPuzzleResult result)
+        private string GetTableResult(TimedProblemResult result)
         {
-            if (result.Status == PuzzleResultStatus.Empty)
+            if (result.Status == ProblemResultStatus.Empty)
                 return "";
 
-            if (result.Status == PuzzleResultStatus.Failed)
+            if (result.Status == ProblemResultStatus.Failed)
                 return "failed";
 
-            if (result.Status == PuzzleResultStatus.Missing)
+            if (result.Status == ProblemResultStatus.Missing)
                 return "missing";
 
-            var timeTaken = result.Status == PuzzleResultStatus.Timeout
+            var timeTaken = result.Status == ProblemResultStatus.Timeout
                 ? TimeSpan.FromSeconds(_timeout)
                 : result.TimeTaken;
 
             var formattedTime = Formatter.FormatTime(timeTaken);
 
-            return result.Status == PuzzleResultStatus.Timeout
+            return result.Status == ProblemResultStatus.Timeout
                 ? $">{formattedTime}"
                 : formattedTime;
         }

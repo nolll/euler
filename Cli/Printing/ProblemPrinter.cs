@@ -22,13 +22,13 @@ namespace Cli.Printing
             Console.ForegroundColor = color;
         }
 
-        protected static ConsoleColor GetColor(PuzzleResult result)
+        protected static ConsoleColor GetColor(ProblemResult result)
         {
             var status = result.Status;
-            if (status == PuzzleResultStatus.Failed || status == PuzzleResultStatus.Missing || status == PuzzleResultStatus.Timeout || status == PuzzleResultStatus.Wrong)
+            if (status == ProblemResultStatus.Failed || status == ProblemResultStatus.Missing || status == ProblemResultStatus.Timeout || status == ProblemResultStatus.Wrong)
                 return ConsoleColor.Red;
 
-            return status == PuzzleResultStatus.Correct
+            return status == ProblemResultStatus.Correct
                 ? ConsoleColor.Green
                 : ConsoleColor.Yellow;
         }

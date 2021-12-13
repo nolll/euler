@@ -7,6 +7,6 @@
         public virtual bool IsSlow => false;
         public virtual bool NeedsRewrite => false;
 
-        public abstract PuzzleResult Run();
+        public abstract ProblemResult Run();
     }
 }

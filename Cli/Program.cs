@@ -10,8 +10,7 @@ namespace Cli
 {
     public class Program
     {
-        private const int PuzzleTimeout = 10;
-
+        private const int ProblemTimeout = 10;
         private const int DebugProblem = 30;
 
         static void Main(string[] args)
@@ -21,10 +20,10 @@ namespace Cli
             if (parameters.ShowHelp)
                 ShowHelp();
             else
-                RunPuzzles(parameters);
+                RunProblems(parameters);
         }
 
-        private static void RunPuzzles(Parameters parameters)
+        private static void RunProblems(Parameters parameters)
         {
             if (parameters.ProblemId != null)
                 RunSingle(parameters);
@@ -34,8 +33,8 @@ namespace Cli
 
         private static void RunSingle(Parameters parameters)
         {
-            var puzzleRepository = new ProblemRepository();
-            var foundProblem = puzzleRepository.GetProblem(parameters.ProblemId);
+            var problemRepository = new ProblemRepository();
+            var foundProblem = problemRepository.GetProblem(parameters.ProblemId);
 
             RunDays(new List<ProblemWrapper> { foundProblem }, null, true);
         }
@@ -45,12 +44,12 @@ namespace Cli
             var puzzleRepository = new ProblemRepository();
             var allProblems = puzzleRepository.GetAll();
             var filteredProblems = FilterProblems(allProblems, parameters);
-            RunDays(filteredProblems, PuzzleTimeout, false);
+            RunDays(filteredProblems, ProblemTimeout, false);
         }
 
         private static void RunDays(IList<ProblemWrapper> days, int? timeout, bool throwExceptions)
         {
-            var runner = GetPuzzleRunner(timeout, throwExceptions);
+            var runner = GetProblemRunner(timeout, throwExceptions);
 
             if (days.Count == 1)
                 runner.Run(days.First());
@@ -66,21 +65,16 @@ namespace Cli
 
         private static Parameters ParseParameters(string[] args)
         {
-            return Parameters.Parse(args);
-        }
-
-        private static Parameters ParseParameters1(string[] args)
-        {
-#if DEBUG
+#if SINGLE
             return new Parameters(problemId: DebugProblem);
 #else
             return Parameters.Parse(args);
 #endif
         }
 
-        private static PuzzleRunner GetPuzzleRunner(int? timeout, bool throwExceptions)
+        private static ProblemRunner GetProblemRunner(int? timeout, bool throwExceptions)
         {
-            return new PuzzleRunner(new SingleProblemPrinter(), new MultiProblemPrinter(timeout), throwExceptions, timeout);
+            return new ProblemRunner(new SingleProblemPrinter(), new MultiProblemPrinter(timeout), throwExceptions, timeout);
         }
 
         private static IList<ProblemWrapper> FilterProblems(IList<ProblemWrapper> problems, Parameters parameters)

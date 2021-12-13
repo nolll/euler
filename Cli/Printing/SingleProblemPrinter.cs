@@ -10,23 +10,17 @@ namespace Cli.Printing
         public void PrintProblem(ProblemWrapperResult problemWrapperResult)
         {
             PrintProblemTitle(problemWrapperResult.Problem);
-            PrintPuzzle(1, problemWrapperResult.Result);
+            PrintProblem(1, problemWrapperResult.Result);
             PrintProblemEnd(problemWrapperResult, problemWrapperResult.Result.TimeTaken);
         }
 
-        private void PrintPuzzle(int part, TimedPuzzleResult puzzleResult)
+        private void PrintProblem(int part, TimedProblemResult problemResult)
         {
-            var time = Formatter.FormatTime(puzzleResult.TimeTaken);
+            var time = Formatter.FormatTime(problemResult.TimeTaken);
             Console.WriteLine($"Part {part}: {time}");
-            var color = GetColor(puzzleResult);
+            var color = GetColor(problemResult);
             SetColor(color);
-            Console.Write(puzzleResult.Answer);
-            //if (puzzleResult.Status == PuzzleResultStatus.Wrong)
-            //{
-            //    Console.WriteLine();
-            //    SetColor(ConsoleColor.DarkRed);
-            //    Console.Write(puzzleResult.CorrectAnswer);
-            //}
+            Console.Write(problemResult.Answer);
             ResetColor();
             Console.WriteLine();
         }
