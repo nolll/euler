@@ -41,8 +41,8 @@ namespace Cli
         
         private static void RunAll(Parameters parameters)
         {
-            var puzzleRepository = new ProblemRepository();
-            var allProblems = puzzleRepository.GetAll();
+            var problemRepository = new ProblemRepository();
+            var allProblems = problemRepository.GetAll();
             var filteredProblems = FilterProblems(allProblems, parameters);
             RunDays(filteredProblems, ProblemTimeout, false);
         }
