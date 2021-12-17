@@ -1,43 +1,42 @@
 ﻿using App.Platform;
 
-namespace App.Problems.Problem009
+namespace App.Problems.Problem009;
+
+public class Problem009 : Problem
 {
-    public class Problem009 : Problem
-    {
-        public override string Name => "Special Pythagorean triplet";
+    public override string Name => "Special Pythagorean triplet";
         
-        public override ProblemResult Run()
-        {
-            var product = Run(1000);
-            return new ProblemResult(product, 31_875_000);
-        }
+    public override ProblemResult Run()
+    {
+        var product = Run(1000);
+        return new ProblemResult(product, 31_875_000);
+    }
 
-        public int Run(int targetSum)
-        {
-            var combinations = GetPermutations(targetSum);
+    public int Run(int targetSum)
+    {
+        var combinations = GetPermutations(targetSum);
 
-            foreach (var (a, b, c) in combinations)
+        foreach (var (a, b, c) in combinations)
+        {
+            if (a + b + c == targetSum && a * a + b * b == c * c)
             {
-                if (a + b + c == targetSum && a * a + b * b == c * c)
-                {
-                    return a * b * c;
-                }
+                return a * b * c;
             }
-
-            return 0;
         }
 
-        private static IEnumerable<(int a, int b, int c)> GetPermutations(int max)
+        return 0;
+    }
+
+    private static IEnumerable<(int a, int b, int c)> GetPermutations(int max)
+    {
+        for (var a = 1; a <= max; a++)
         {
-            for (var a = 1; a <= max; a++)
+            for (var b = a + 1; b <= max; b++)
             {
-                for (var b = a + 1; b <= max; b++)
+                for (var c = b + 1; c <= max; c++)
                 {
-                    for (var c = b + 1; c <= max; c++)
-                    {
-                        if (a + b + c == max)
-                            yield return (a, b, c);
-                    }
+                    if (a + b + c == max)
+                        yield return (a, b, c);
                 }
             }
         }

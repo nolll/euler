@@ -1,21 +1,20 @@
 using NUnit.Framework;
 
-namespace App.Problems.Problem013
+namespace App.Problems.Problem013;
+
+public class Problem013Tests
 {
-    public class Problem013Tests
+    [Test]
+    public void Test()
     {
-        [Test]
-        public void Test()
-        {
-            const string numbers = @"
+        const string numbers = @"
 10000000000000000000000000000000000000000000000000
 20000000000000000000000000000000000000000000000000
 30000000000000000000000000000000000000000000000000";
 
-            var problem = new Problem013();
-            var result = problem.Run(numbers);
+        var problem = new Problem013();
+        var result = problem.Run(numbers);
 
-            Assert.That(result, Is.EqualTo("6000000000"));
-        }
+        Assert.That(result, Is.EqualTo("6000000000"));
     }
 }

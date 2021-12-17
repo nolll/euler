@@ -1,22 +1,21 @@
 using NUnit.Framework;
 
-namespace App.Problems.Problem018
+namespace App.Problems.Problem018;
+
+public class Problem018Tests
 {
-    public class Problem018Tests
+    [Test]
+    public void Test()
     {
-        [Test]
-        public void Test()
-        {
-            const string triangle = @"
+        const string triangle = @"
 3
 7 4
 2 4 6
 8 5 9 3";
 
-            var problem = new Problem018();
-            var result = problem.Run(triangle);
+        var problem = new Problem018();
+        var result = problem.Run(triangle);
 
-            Assert.That(result, Is.EqualTo(23));
-        }
+        Assert.That(result, Is.EqualTo(23));
     }
 }

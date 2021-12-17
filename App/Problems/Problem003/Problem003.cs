@@ -1,22 +1,21 @@
 ﻿using App.Common.Numbers;
 using App.Platform;
 
-namespace App.Problems.Problem003
+namespace App.Problems.Problem003;
+
+public class Problem003 : Problem
 {
-    public class Problem003 : Problem
+    public override string Name => "Largest prime factor";
+
+    public override ProblemResult Run()
     {
-        public override string Name => "Largest prime factor";
-
-        public override ProblemResult Run()
-        {
-            var largestPrime = Run(600_851_475_143);
+        var largestPrime = Run(600_851_475_143);
             
-            return new ProblemResult(largestPrime, 6857);
-        }
+        return new ProblemResult(largestPrime, 6857);
+    }
 
-        public long Run(long number)
-        {
-            return Factorization.FindLargestPrimeFactor(number);
-        }
+    public long Run(long number)
+    {
+        return Factorization.FindLargestPrimeFactor(number);
     }
 }

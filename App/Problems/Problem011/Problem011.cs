@@ -1,128 +1,128 @@
 ﻿using App.Common.CoordinateSystems;
 using App.Platform;
 
-namespace App.Problems.Problem011
-{
-    public class Problem011 : Problem
-    {
-        public override string Name => "Largest product in a grid";
+namespace App.Problems.Problem011;
 
-        public override ProblemResult Run()
+public class Problem011 : Problem
+{
+    public override string Name => "Largest product in a grid";
+
+    public override ProblemResult Run()
+    {
+        var result = Run(Grid);
+        return new ProblemResult(result, 70600674);
+    }
+
+    public long Run(string grid)
+    {
+        var matrix = BuildMatrix(grid);
+        var sumFinder = new GridProductFinder(matrix);
+        var largestSum = sumFinder.FindLargestSum();
+            
+        return largestSum;
+    }
+
+    private class GridProductFinder
+    {
+        private readonly Matrix<int> _matrix;
+        private int _x;
+        private int _y;
+
+        public GridProductFinder(Matrix<int> matrix)
         {
-            var result = Run(Grid);
-            return new ProblemResult(result, 70600674);
+            _matrix = matrix;
+            _x = 0;
+            _y = 0;
         }
 
-        public long Run(string grid)
+        public int FindLargestSum()
         {
-            var matrix = BuildMatrix(grid);
-            var sumFinder = new GridProductFinder(matrix);
-            var largestSum = sumFinder.FindLargestSum();
-            
+            var deltas = new List<(int x, int y)>
+            {
+                (0, -1),
+                (1, -1),
+                (1, 0),
+                (1, 1),
+                (0, 1),
+                (-1, 1),
+                (-1, 0),
+                (-1, -1)
+            };
+                
+            var largestSum = 0;
+            for (_y = 0; _y < _matrix.Height; _y++)
+            {
+                for (_x = 0; _x < _matrix.Width; _x++)
+                {
+                    foreach (var (dx, dy) in deltas)
+                    {
+                        var n = GetProduct(dx, dy);
+                        if (n > largestSum)
+                            largestSum = n;
+                    }
+                }
+            }
+
             return largestSum;
         }
 
-        private class GridProductFinder
+        private int GetProduct(int dx, int dy)
         {
-            private readonly Matrix<int> _matrix;
-            private int _x;
-            private int _y;
-
-            public GridProductFinder(Matrix<int> matrix)
+            var sum = 1;
+            for (var i = 0; i < 4; i++)
             {
-                _matrix = matrix;
-                _x = 0;
-                _y = 0;
+                var x = _x + i * dx;
+                var y = _y + i * dy;
+
+                if (!IsInMatrix(x, y))
+                    return 0;
+
+                var num = _matrix.ReadValueAt(new MatrixAddress(x, y));
+                sum *= num;
             }
 
-            public int FindLargestSum()
-            {
-                var deltas = new List<(int x, int y)>
-                {
-                    (0, -1),
-                    (1, -1),
-                    (1, 0),
-                    (1, 1),
-                    (0, 1),
-                    (-1, 1),
-                    (-1, 0),
-                    (-1, -1)
-                };
-                
-                var largestSum = 0;
-                for (_y = 0; _y < _matrix.Height; _y++)
-                {
-                    for (_x = 0; _x < _matrix.Width; _x++)
-                    {
-                        foreach (var (dx, dy) in deltas)
-                        {
-                            var n = GetProduct(dx, dy);
-                            if (n > largestSum)
-                                largestSum = n;
-                        }
-                    }
-                }
-
-                return largestSum;
-            }
-
-            private int GetProduct(int dx, int dy)
-            {
-                var sum = 1;
-                for (var i = 0; i < 4; i++)
-                {
-                    var x = _x + i * dx;
-                    var y = _y + i * dy;
-
-                    if (!IsInMatrix(x, y))
-                        return 0;
-
-                    var num = _matrix.ReadValueAt(new MatrixAddress(x, y));
-                    sum *= num;
-                }
-
-                return sum;
-            }
-
-            private bool IsInMatrix(int x, int y)
-            {
-                if (x < 0 || y < 0)
-                    return false;
-
-                if (y >= _matrix.Height || x >= _matrix.Width)
-                    return false;
-
-                return true;
-            }
+            return sum;
         }
 
-        private static Matrix<int> BuildMatrix(string input, char defaultValue = default)
+        private bool IsInMatrix(int x, int y)
         {
-            var matrix = new Matrix<int>(1, 1, defaultValue);
-            var rows = input.Trim().Split('\n');
-            var y = 0;
-            foreach (var row in rows)
-            {
-                var x = 0;
-                var items = row.Trim().Split(" ");
-                foreach (var item in items)
-                {
-                    var trimmed = item.TrimStart('0');
-                    var num = trimmed.Length > 0
-                        ? int.Parse(trimmed)
-                        : 0;
-                    matrix.MoveTo(x, y);
-                    matrix.WriteValue(num);
-                    x += 1;
-                }
+            if (x < 0 || y < 0)
+                return false;
 
-                y += 1;
+            if (y >= _matrix.Height || x >= _matrix.Width)
+                return false;
+
+            return true;
+        }
+    }
+
+    private static Matrix<int> BuildMatrix(string input, char defaultValue = default)
+    {
+        var matrix = new Matrix<int>(1, 1, defaultValue);
+        var rows = input.Trim().Split('\n');
+        var y = 0;
+        foreach (var row in rows)
+        {
+            var x = 0;
+            var items = row.Trim().Split(" ");
+            foreach (var item in items)
+            {
+                var trimmed = item.TrimStart('0');
+                var num = trimmed.Length > 0
+                    ? int.Parse(trimmed)
+                    : 0;
+                matrix.MoveTo(x, y);
+                matrix.WriteValue(num);
+                x += 1;
             }
 
-            return matrix;
+            y += 1;
         }
 
-        private const string Grid = @"
+        return matrix;
+    }
+
+    private const string Grid = @"
 08 02 22 97 38 15 00 40 00 75 04 05 07 78 52 12 50 77 91 08
 49 49 99 40 17 81 18 57 60 87 17 40 98 43 69 48 04 56 62 00
 81 49 31 73 55 79 14 29 93 71 40 67 53 88 30 03 49 13 36 65
@@ -143,5 +143,4 @@ namespace App.Problems.Problem011
 20 69 36 41 72 30 23 88 34 62 99 69 82 67 59 85 74 04 36 16
 20 73 35 29 78 31 90 01 74 31 49 71 48 86 81 16 23 57 05 54
 01 70 54 71 83 51 54 69 16 92 33 48 61 43 52 01 89 19 67 48";
-    }
 }

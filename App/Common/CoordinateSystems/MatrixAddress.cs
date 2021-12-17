@@ -1,50 +1,49 @@
-﻿namespace App.Common.CoordinateSystems
+﻿namespace App.Common.CoordinateSystems;
+
+public class MatrixAddress : IEquatable<MatrixAddress>
 {
-    public class MatrixAddress : IEquatable<MatrixAddress>
+    private string _id;
+
+    public int X { get; }
+    public int Y { get; }
+    public string Id => _id ??= $"{X},{Y}";
+
+    public MatrixAddress(int x, int y)
     {
-        private string _id;
+        X = x;
+        Y = y;
+    }
 
-        public int X { get; }
-        public int Y { get; }
-        public string Id => _id ??= $"{X},{Y}";
+    public int ManhattanDistanceTo(MatrixAddress other)
+    {
+        var xMax = Math.Max(X, other.X);
+        var xMin = Math.Min(X, other.X);
+        var xDiff = xMax - xMin;
 
-        public MatrixAddress(int x, int y)
-        {
-            X = x;
-            Y = y;
-        }
+        var yMax = Math.Max(Y, other.Y);
+        var yMin = Math.Min(Y, other.Y);
+        var yDiff = yMax - yMin;
 
-        public int ManhattanDistanceTo(MatrixAddress other)
-        {
-            var xMax = Math.Max(X, other.X);
-            var xMin = Math.Min(X, other.X);
-            var xDiff = xMax - xMin;
+        return xDiff + yDiff;
+    }
 
-            var yMax = Math.Max(Y, other.Y);
-            var yMin = Math.Min(Y, other.Y);
-            var yDiff = yMax - yMin;
+    public bool Equals(MatrixAddress other)
+    {
+        if (ReferenceEquals(null, other)) return false;
+        if (ReferenceEquals(this, other)) return true;
+        return X == other.X && Y == other.Y;
+    }
 
-            return xDiff + yDiff;
-        }
+    public override bool Equals(object obj)
+    {
+        if (ReferenceEquals(null, obj)) return false;
+        if (ReferenceEquals(this, obj)) return true;
+        if (obj.GetType() != this.GetType()) return false;
+        return Equals((MatrixAddress)obj);
+    }
 
-        public bool Equals(MatrixAddress other)
-        {
-            if (ReferenceEquals(null, other)) return false;
-            if (ReferenceEquals(this, other)) return true;
-            return X == other.X && Y == other.Y;
-        }
-
-        public override bool Equals(object obj)
-        {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != this.GetType()) return false;
-            return Equals((MatrixAddress)obj);
-        }
-
-        public override int GetHashCode()
-        {
-            return HashCode.Combine(X, Y);
-        }
+    public override int GetHashCode()
+    {
+        return HashCode.Combine(X, Y);
     }
 }

@@ -1,23 +1,22 @@
 using NUnit.Framework;
 
-namespace App.Problems.Problem011
+namespace App.Problems.Problem011;
+
+public class Problem011Tests
 {
-    public class Problem011Tests
+    [Test]
+    public void Test()
     {
-        [Test]
-        public void Test()
-        {
-            const string grid = @"
+        const string grid = @"
 01 01 01 01 01
 01 02 02 02 01
 01 02 02 02 01
 01 02 02 03 01
 01 01 01 01 04";
 
-            var problem = new Problem011();
-            var result = problem.Run(grid);
+        var problem = new Problem011();
+        var result = problem.Run(grid);
 
-            Assert.That(result, Is.EqualTo(48));
-        }
+        Assert.That(result, Is.EqualTo(48));
     }
 }

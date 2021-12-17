@@ -1,10 +1,9 @@
-﻿namespace App.Platform
+﻿namespace App.Platform;
+
+public class TimeoutProblemResult : ProblemResult
 {
-    public class TimeoutProblemResult : ProblemResult
+    public TimeoutProblemResult(string message)
+        : base(message, ProblemResultStatus.Timeout)
     {
-        public TimeoutProblemResult(string message)
-            : base(message, ProblemResultStatus.Timeout)
-        {
-        }
     }
 }

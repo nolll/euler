@@ -1,16 +1,15 @@
 using NUnit.Framework;
 
-namespace App.Problems.Problem020
-{
-    public class Problem020Tests
-    {
-        [Test]
-        public void Test()
-        {
-            var problem = new Problem020();
-            var result = problem.Run(10);
+namespace App.Problems.Problem020;
 
-            Assert.That(result, Is.EqualTo(27));
-        }
+public class Problem020Tests
+{
+    [Test]
+    public void Test()
+    {
+        var problem = new Problem020();
+        var result = problem.Run(10);
+
+        Assert.That(result, Is.EqualTo(27));
     }
 }

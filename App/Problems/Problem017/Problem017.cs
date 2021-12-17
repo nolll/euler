@@ -1,38 +1,37 @@
 ﻿using App.Common.Strings;
 using App.Platform;
 
-namespace App.Problems.Problem017
+namespace App.Problems.Problem017;
+
+public class Problem017 : Problem
 {
-    public class Problem017 : Problem
+    public override string Name => "Number letter counts";
+
+    public override ProblemResult Run()
     {
-        public override string Name => "Number letter counts";
+        var result = Run(1000);
+        return new ProblemResult(result, 21124);
+    }
 
-        public override ProblemResult Run()
+    public int Run(int target)
+    {
+        var strings = new List<string>();
+        for (var i = 1; i <= target; i++)
         {
-            var result = Run(1000);
-            return new ProblemResult(result, 21124);
+            var numberAsWords = new NumberAsString(i).ToString();
+            strings.Add(numberAsWords);
         }
 
-        public int Run(int target)
-        {
-            var strings = new List<string>();
-            for (var i = 1; i <= target; i++)
-            {
-                var numberAsWords = new NumberAsString(i).ToString();
-                strings.Add(numberAsWords);
-            }
-
-            return CountLetters(strings);
-        }
+        return CountLetters(strings);
+    }
         
-        private static int CountLetters(List<string> strings)
-        {
-            return strings.Select(CountLetters).Sum();
-        }
+    private static int CountLetters(List<string> strings)
+    {
+        return strings.Select(CountLetters).Sum();
+    }
 
-        private static int CountLetters(string s)
-        {
-            return s.Replace(" ", "").Length;
-        }
+    private static int CountLetters(string s)
+    {
+        return s.Replace(" ", "").Length;
     }
 }
