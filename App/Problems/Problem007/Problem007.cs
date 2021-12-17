@@ -1,37 +1,36 @@
 ﻿using App.Common.Numbers;
 using App.Platform;
 
-namespace App.Problems.Problem007
+namespace App.Problems.Problem007;
+
+public class Problem007 : Problem
 {
-    public class Problem007 : Problem
+    public override string Name => "10001st prime";
+
+    public override ProblemResult Run()
     {
-        public override string Name => "10001st prime";
+        var nthPrime = Run(10001);
 
-        public override ProblemResult Run()
-        {
-            var nthPrime = Run(10001);
+        return new ProblemResult(nthPrime, 104743);
+    }
 
-            return new ProblemResult(nthPrime, 104743);
-        }
-
-        public int Run(int index)
-        {
-            var primeCount = 0;
-            var lastPrime = 0;
-            var i = 2;
+    public int Run(int index)
+    {
+        var primeCount = 0;
+        var lastPrime = 0;
+        var i = 2;
             
-            while (primeCount < index)
+        while (primeCount < index)
+        {
+            if (Factorization.IsPrime(i))
             {
-                if (Factorization.IsPrime(i))
-                {
-                    lastPrime = i;
-                    primeCount++;
-                }
-
-                i++;
+                lastPrime = i;
+                primeCount++;
             }
-            
-            return lastPrime;
+
+            i++;
         }
+            
+        return lastPrime;
     }
 }

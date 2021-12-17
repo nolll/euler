@@ -1,10 +1,9 @@
-﻿namespace App.Common.Strings
+﻿namespace App.Common.Strings;
+
+public static class InputReader
 {
-    public static class InputReader
+    public static IList<string> ReadLines(string str)
     {
-        public static IList<string> ReadLines(string str)
-        {
-            return str.Trim().Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.None).ToList();
-        }
+        return str.Trim().Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.None).ToList();
     }
 }

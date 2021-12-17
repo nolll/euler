@@ -1,31 +1,30 @@
 ﻿using System.Numerics;
 using App.Platform;
 
-namespace App.Problems.Problem020
+namespace App.Problems.Problem020;
+
+public class Problem020 : Problem
 {
-    public class Problem020 : Problem
+    public override string Name => "Factorial digit sum";
+
+    public override ProblemResult Run()
     {
-        public override string Name => "Factorial digit sum";
+        BigInteger factorial = 100;
+        var result = Run(factorial);
+        return new ProblemResult(result, 648);
+    }
 
-        public override ProblemResult Run()
+    public int Run(BigInteger factorial)
+    {
+        BigInteger product = 1;
+        var current = factorial;
+        while (current > 0)
         {
-            BigInteger factorial = 100;
-            var result = Run(factorial);
-            return new ProblemResult(result, 648);
+            product *= current;
+            current--;
         }
 
-        public int Run(BigInteger factorial)
-        {
-            BigInteger product = 1;
-            var current = factorial;
-            while (current > 0)
-            {
-                product *= current;
-                current--;
-            }
-
-            var numbers = product.ToString().ToCharArray().Select(o => o.ToString()).Select(int.Parse);
-            return numbers.Sum();
-        }
+        var numbers = product.ToString().ToCharArray().Select(o => o.ToString()).Select(int.Parse);
+        return numbers.Sum();
     }
 }

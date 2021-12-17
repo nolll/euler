@@ -1,13 +1,12 @@
-﻿namespace App.Platform
+﻿namespace App.Platform;
+
+public enum ProblemResultStatus
 {
-    public enum ProblemResultStatus
-    {
-        Correct,
-        Completed,
-        Wrong,
-        Missing,
-        Empty,
-        Failed,
-        Timeout
-    }
+    Correct,
+    Completed,
+    Wrong,
+    Missing,
+    Empty,
+    Failed,
+    Timeout
 }

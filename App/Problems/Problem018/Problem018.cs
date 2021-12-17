@@ -1,95 +1,95 @@
 ﻿using App.Common.Strings;
 using App.Platform;
 
-namespace App.Problems.Problem018
+namespace App.Problems.Problem018;
+
+public class Problem018 : Problem
 {
-    public class Problem018 : Problem
+    public override string Name => "Maximum path sum I";
+
+    public override ProblemResult Run()
     {
-        public override string Name => "Maximum path sum I";
+        var result = Run(Triangle);
+        return new ProblemResult(result, 1074);
+    }
 
-        public override ProblemResult Run()
-        {
-            var result = Run(Triangle);
-            return new ProblemResult(result, 1074);
-        }
-
-        public int Run(string triangleString)
-        {
-            var triangle = BuildTriangle(triangleString);
-            var sum = triangle.First().First().BestPath;
+    public int Run(string triangleString)
+    {
+        var triangle = BuildTriangle(triangleString);
+        var sum = triangle.First().First().BestPath;
            
-            return sum;
+        return sum;
+    }
+
+    private List<List<TriangleNode>> BuildTriangle(string triangleString)
+    {
+        var lines = InputReader.ReadLines(triangleString);
+        var triangle = new List<List<TriangleNode>>();
+        foreach (var line in lines)
+        {
+            var numbers = Enumerable.Select<string, string>(line
+                    .Trim()
+                    .Replace("  ", " ")
+                    .Split(' '), o => o.TrimStart('0'))
+                .Select(o => new TriangleNode(int.Parse(o)))
+                .ToList();
+            triangle.Add(numbers);
         }
 
-        private List<List<TriangleNode>> BuildTriangle(string triangleString)
+        for (var i = 0; i < triangle.Count - 1; i++)
         {
-            var lines = InputReader.ReadLines(triangleString);
-            var triangle = new List<List<TriangleNode>>();
-            foreach (var line in lines)
+            var currentRow = triangle[i];
+            var nextRow = triangle[i + 1];
+
+            for (var j = 0; j < currentRow.Count; j++)
             {
-                var numbers = Enumerable.Select<string, string>(line
-                        .Trim()
-                        .Replace("  ", " ")
-                        .Split(' '), o => o.TrimStart('0'))
-                    .Select(o => new TriangleNode(int.Parse(o)))
-                    .ToList();
-                triangle.Add(numbers);
+                var currentNode = currentRow[j];
+                var childA = nextRow[j];
+                var childB = nextRow[j + 1];
+                childA.Parent = childB.Parent = currentNode;
+                currentNode.AddChild(childA);
+                currentNode.AddChild(childB);
             }
-
-            for (var i = 0; i < triangle.Count - 1; i++)
-            {
-                var currentRow = triangle[i];
-                var nextRow = triangle[i + 1];
-
-                for (var j = 0; j < currentRow.Count; j++)
-                {
-                    var currentNode = currentRow[j];
-                    var childA = nextRow[j];
-                    var childB = nextRow[j + 1];
-                    childA.Parent = childB.Parent = currentNode;
-                    currentNode.AddChild(childA);
-                    currentNode.AddChild(childB);
-                }
-            }
-
-            return triangle;
         }
 
-        protected class TriangleNode
-        {
-            private int? _bestPath;
+        return triangle;
+    }
+
+    protected class TriangleNode
+    {
+        private int? _bestPath;
             
-            public int Value { get; }
-            public TriangleNode Parent { get; set; }
-            public List<TriangleNode> Children { get; } = new();
+        public int Value { get; }
+        public TriangleNode Parent { get; set; }
+        public List<TriangleNode> Children { get; } = new();
 
-            public int BestPath
+        public int BestPath
+        {
+            get
             {
-                get
+                if (_bestPath == null)
                 {
-                    if (_bestPath == null)
-                    {
-                        _bestPath = Children.Any()
-                            ? Value + Children.Max(o => o.BestPath)
-                            : Value;
-                    }
-
-                    return _bestPath.Value;
+                    _bestPath = Children.Any()
+                        ? Value + Children.Max(o => o.BestPath)
+                        : Value;
                 }
-            }
 
-            public TriangleNode(int value)
-            {
-                Value = value;
-            }
-
-            public void AddChild(TriangleNode triangleNode)
-            {
-                Children.Add(triangleNode);
+                return _bestPath.Value;
             }
         }
 
-        private const string Triangle = @"
+        public TriangleNode(int value)
+        {
+            Value = value;
+        }
+
+        public void AddChild(TriangleNode triangleNode)
+        {
+            Children.Add(triangleNode);
+        }
+    }
+
+    private const string Triangle = @"
 75
 95 64
 17 47 82
@@ -105,5 +105,4 @@ namespace App.Problems.Problem018
 91 71 52 38 17 14 91 43 58 50 27 29 48
 63 66 04 68 89 53 67 30 73 16 69 87 40 31
 04 62 98 27 23 09 70 98 73 93 38 53 60 04 23";
-    }
 }

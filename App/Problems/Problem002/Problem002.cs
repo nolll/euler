@@ -1,35 +1,34 @@
 ﻿using App.Platform;
 
-namespace App.Problems.Problem002
+namespace App.Problems.Problem002;
+
+public class Problem002 : Problem
 {
-    public class Problem002 : Problem
+    public override string Name => "Even Fibonacci numbers";
+
+    public override ProblemResult Run()
     {
-        public override string Name => "Even Fibonacci numbers";
+        var sum = Run(4_000_000);
+        return new ProblemResult(sum, 4613732);
+    }
 
-        public override ProblemResult Run()
+    public int Run(int limit)
+    {
+        var numbers = new List<int> { 1, 2 };
+        while (true)
         {
-            var sum = Run(4_000_000);
-            return new ProblemResult(sum, 4613732);
-        }
+            var lastNumbers = numbers.TakeLast(2);
+            var nextNumber = lastNumbers.Sum();
 
-        public int Run(int limit)
-        {
-            var numbers = new List<int> { 1, 2 };
-            while (true)
-            {
-                var lastNumbers = numbers.TakeLast(2);
-                var nextNumber = lastNumbers.Sum();
-
-                if (nextNumber > limit)
-                    break;
+            if (nextNumber > limit)
+                break;
                 
-                numbers.Add(nextNumber);
-            }
-
-            var evenNumbers = numbers.Where(o => o % 2 == 0);
-            var sum = evenNumbers.Sum();
-
-            return sum;
+            numbers.Add(nextNumber);
         }
+
+        var evenNumbers = numbers.Where(o => o % 2 == 0);
+        var sum = evenNumbers.Sum();
+
+        return sum;
     }
 }

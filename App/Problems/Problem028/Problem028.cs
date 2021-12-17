@@ -1,83 +1,82 @@
 ﻿using App.Common.CoordinateSystems;
 using App.Platform;
 
-namespace App.Problems.Problem028
+namespace App.Problems.Problem028;
+
+public class Problem028 : Problem
 {
-    public class Problem028 : Problem
+    public override string Name => "Number spiral diagonals";
+
+    public override ProblemResult Run()
     {
-        public override string Name => "Number spiral diagonals";
+        var result = Run(1001);
 
-        public override ProblemResult Run()
+        return new ProblemResult(result, 669_171_001);
+    }
+
+    public int Run(int size)
+    {
+        var matrix = BuildMatrix(size);
+        return CalculateDiagonalSum(matrix);
+    }
+
+    private int CalculateDiagonalSum(Matrix<int> matrix)
+    {
+        var sum = 0;
+
+        matrix.MoveTo(0, 0);
+        while (true)
         {
-            var result = Run(1001);
-
-            return new ProblemResult(result, 669_171_001);
+            sum += matrix.ReadValue();
+            if (matrix.TryMoveRight())
+                matrix.MoveDown();
+            else
+                break;
         }
 
-        public int Run(int size)
+        matrix.MoveTo(matrix.Width - 1, 0);
+        while (true)
         {
-            var matrix = BuildMatrix(size);
-            return CalculateDiagonalSum(matrix);
+            sum += matrix.ReadValue();
+            if (matrix.TryMoveLeft())
+                matrix.MoveDown();
+            else
+                break;
         }
 
-        private int CalculateDiagonalSum(Matrix<int> matrix)
+        sum -= 1;
+
+        return sum;
+    }
+
+    private Matrix<int> BuildMatrix(int size)
+    {
+        var i = 1;
+        var matrix = new Matrix<int>();
+        matrix.WriteValue(i);
+        matrix.TurnTo(MatrixDirection.Right);
+        matrix.MoveForward();
+        i++;
+        matrix.WriteValue(i);
+        i++;
+        var max = size * size;
+
+        while (i <= max)
         {
-            var sum = 0;
-
-            matrix.MoveTo(0, 0);
-            while (true)
-            {
-                sum += matrix.ReadValue();
-                if (matrix.TryMoveRight())
-                    matrix.MoveDown();
-                else
-                    break;
-            }
-
-            matrix.MoveTo(matrix.Width - 1, 0);
-            while (true)
-            {
-                sum += matrix.ReadValue();
-                if (matrix.TryMoveLeft())
-                    matrix.MoveDown();
-                else
-                    break;
-            }
-
-            sum -= 1;
-
-            return sum;
-        }
-
-        private Matrix<int> BuildMatrix(int size)
-        {
-            var i = 1;
-            var matrix = new Matrix<int>();
-            matrix.WriteValue(i);
-            matrix.TurnTo(MatrixDirection.Right);
+            matrix.TurnRight();
             matrix.MoveForward();
-            i++;
-            matrix.WriteValue(i);
-            i++;
-            var max = size * size;
-
-            while (i <= max)
+            if(matrix.ReadValue() > 0)
             {
-                matrix.TurnRight();
+                matrix.MoveBackward();
+                matrix.TurnLeft();
                 matrix.MoveForward();
-                if(matrix.ReadValue() > 0)
-                {
-                    matrix.MoveBackward();
-                    matrix.TurnLeft();
-                    matrix.MoveForward();
-                }
-
-                matrix.WriteValue(i);
-
-                i++;
             }
 
-            return matrix;
+            matrix.WriteValue(i);
+
+            i++;
         }
+
+        return matrix;
     }
 }

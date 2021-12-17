@@ -1,39 +1,38 @@
 ﻿using App.Platform;
 
-namespace App.Problems.Problem019
+namespace App.Problems.Problem019;
+
+public class Problem019 : Problem
 {
-    public class Problem019 : Problem
+    public override string Name => "Counting Sundays";
+
+    public override ProblemResult Run()
     {
-        public override string Name => "Counting Sundays";
+        var startDate = DateTime.Parse("1901-01-01");
+        var endDate = DateTime.Parse("2000-12-31");
+        var result = Run(startDate, endDate);
+        return new ProblemResult(result, 171);
+    }
 
-        public override ProblemResult Run()
+    public int Run(DateTime startDate, DateTime endDate)
+    {
+        var firstSunday = startDate;
+        while (firstSunday.DayOfWeek != DayOfWeek.Sunday)
         {
-            var startDate = DateTime.Parse("1901-01-01");
-            var endDate = DateTime.Parse("2000-12-31");
-            var result = Run(startDate, endDate);
-            return new ProblemResult(result, 171);
+            firstSunday = firstSunday.AddDays(1);
         }
 
-        public int Run(DateTime startDate, DateTime endDate)
+        var sundayCount = 0;
+        var currentDate = firstSunday;
+        while (currentDate < endDate)
         {
-            var firstSunday = startDate;
-            while (firstSunday.DayOfWeek != DayOfWeek.Sunday)
+            if (currentDate.Day == 1)
             {
-                firstSunday = firstSunday.AddDays(1);
+                sundayCount++;
             }
-
-            var sundayCount = 0;
-            var currentDate = firstSunday;
-            while (currentDate < endDate)
-            {
-                if (currentDate.Day == 1)
-                {
-                    sundayCount++;
-                }
-                currentDate = currentDate.AddDays(7);
-            }
+            currentDate = currentDate.AddDays(7);
+        }
             
-            return sundayCount;
-        }
+        return sundayCount;
     }
 }

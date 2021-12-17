@@ -1,54 +1,53 @@
 ﻿using App.Platform;
 
-namespace App.Problems.Problem030
+namespace App.Problems.Problem030;
+
+public class Problem030 : Problem
 {
-    public class Problem030 : Problem
+    public override string Name => "Digit fifth powers";
+
+    public override ProblemResult Run()
     {
-        public override string Name => "Digit fifth powers";
+        var result = Run(5);
 
-        public override ProblemResult Run()
-        {
-            var result = Run(5);
+        return new ProblemResult(result, 443839);
+    }
 
-            return new ProblemResult(result, 443839);
-        }
-
-        public int Run(int power)
-        {
-            var upperBound = GetUpperBound(power);
-            var results = GetNumbers(power, upperBound);
+    public int Run(int power)
+    {
+        var upperBound = GetUpperBound(power);
+        var results = GetNumbers(power, upperBound);
             
-            return results.Sum();
-        }
+        return results.Sum();
+    }
 
-        private IEnumerable<int> GetNumbers(int power, int upperBound)
+    private IEnumerable<int> GetNumbers(int power, int upperBound)
+    {
+        for (var i = 2; i < upperBound; i++)
         {
-            for (var i = 2; i < upperBound; i++)
-            {
-                var digits = i.ToString().ToCharArray().Select(o => int.Parse(o.ToString()));
-                var sumOfPowers = digits.Select(o => Pow(o, power)).Sum();
-                if (sumOfPowers == i)
-                    yield return i;
-            }
+            var digits = i.ToString().ToCharArray().Select(o => int.Parse(o.ToString()));
+            var sumOfPowers = digits.Select(o => Pow(o, power)).Sum();
+            if (sumOfPowers == i)
+                yield return i;
         }
+    }
 
-        private int GetUpperBound(int power)
+    private int GetUpperBound(int power)
+    {
+        var n = Pow(9, power);
+        var s = n.ToString();
+        var l = s.Length + 1;
+        return Pow(10, l);
+    }
+
+    private int Pow(int n, int power)
+    {
+        var result = n;
+        for (var i = 1; i < power; i++)
         {
-            var n = Pow(9, power);
-            var s = n.ToString();
-            var l = s.Length + 1;
-            return Pow(10, l);
+            result *= n;
         }
 
-        private int Pow(int n, int power)
-        {
-            var result = n;
-            for (var i = 1; i < power; i++)
-            {
-                result *= n;
-            }
-
-            return result;
-        }
+        return result;
     }
 }
