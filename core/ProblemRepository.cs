@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
-using App.Platform;
+using Core.Platform;
 
-namespace App;
+namespace Core;
 
 public class ProblemRepository
 {

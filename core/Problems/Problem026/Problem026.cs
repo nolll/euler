@@ -1,8 +1,8 @@
 ﻿using System.Numerics;
 using System.Text.RegularExpressions;
-using App.Platform;
+using Core.Platform;
 
-namespace App.Problems.Problem026;
+namespace Core.Problems.Problem026;
 
 public class Problem026 : Problem
 {

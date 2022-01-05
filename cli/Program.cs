@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using App;
-using App.Platform;
 using Cli.ConsoleTools;
 using Cli.Printing;
+using Core;
+using Core.Platform;
 
 namespace Cli;
 

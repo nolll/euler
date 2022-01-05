@@ -1,7 +1,7 @@
-﻿using App.Common.CoordinateSystems;
-using App.Platform;
+﻿using Core.Common.CoordinateSystems;
+using Core.Platform;
 
-namespace App.Problems.Problem011;
+namespace Core.Problems.Problem011;
 
 public class Problem011 : Problem
 {

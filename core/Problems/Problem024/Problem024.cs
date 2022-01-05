@@ -1,7 +1,7 @@
-﻿using App.Common.Combinatorics;
-using App.Platform;
+﻿using Core.Common.Combinatorics;
+using Core.Platform;
 
-namespace App.Problems.Problem024;
+namespace Core.Problems.Problem024;
 
 public class Problem024 : Problem
 {

@@ -1,4 +1,4 @@
-﻿namespace App.Common.Strings;
+﻿namespace Core.Common.Strings;
 
 public class NumberAsString
 {

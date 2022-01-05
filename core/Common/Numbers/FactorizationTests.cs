@@ -1,6 +1,6 @@
 using NUnit.Framework;
 
-namespace App.Common.Numbers;
+namespace Core.Common.Numbers;
 
 public class FactorizationTests
 {

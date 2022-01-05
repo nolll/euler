@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace App.Common.CoordinateSystems;
+namespace Core.Common.CoordinateSystems;
 
 public class Matrix<T> : BaseMatrix
 {
@@ -17,7 +17,7 @@ public class Matrix<T> : BaseMatrix
     public bool IsAtRightEdge => Address.X == Width - 1;
     public bool IsAtBottom => Address.Y == Height - 1;
     public bool IsAtLeftEdge => Address.X == 0;
-    public MatrixAddress Center => new MatrixAddress(Width / 2, Height / 2);
+    public MatrixAddress Center => new(Width / 2, Height / 2);
 
     public Matrix(int width = 1, int height = 1, T defaultValue = default)
     {

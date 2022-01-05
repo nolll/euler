@@ -1,7 +1,7 @@
 ﻿using System.Numerics;
-using App.Platform;
+using Core.Platform;
 
-namespace App.Problems.Problem025;
+namespace Core.Problems.Problem025;
 
 public class Problem025 : Problem
 {

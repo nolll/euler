@@ -1,6 +1,6 @@
 using NUnit.Framework;
 
-namespace App.Problems.Problem005;
+namespace Core.Problems.Problem005;
 
 public class Problem005Tests
 {

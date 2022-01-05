@@ -1,4 +1,4 @@
-﻿namespace App.Common.Numbers;
+﻿namespace Core.Common.Numbers;
 
 public static class Factorization
 {

@@ -1,4 +1,4 @@
-﻿namespace App.Common.Combinatorics;
+﻿namespace Core.Common.Combinatorics;
 
 public static class PermutationGenerator
 {

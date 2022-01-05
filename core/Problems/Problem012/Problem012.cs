@@ -1,7 +1,7 @@
-﻿using App.Common.Numbers;
-using App.Platform;
+﻿using Core.Common.Numbers;
+using Core.Platform;
 
-namespace App.Problems.Problem012;
+namespace Core.Problems.Problem012;
 
 public class Problem012 : Problem
 {

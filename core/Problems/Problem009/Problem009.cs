@@ -1,6 +1,6 @@
-﻿using App.Platform;
+﻿using Core.Platform;
 
-namespace App.Problems.Problem009;
+namespace Core.Problems.Problem009;
 
 public class Problem009 : Problem
 {

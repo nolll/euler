@@ -1,8 +1,8 @@
 ﻿using System.Numerics;
-using App.Common.Strings;
-using App.Platform;
+using Core.Common.Strings;
+using Core.Platform;
 
-namespace App.Problems.Problem013;
+namespace Core.Problems.Problem013;
 
 public class Problem013 : Problem
 {
